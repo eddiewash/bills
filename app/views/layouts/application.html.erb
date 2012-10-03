@@ -7,8 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class= "brand" href="#">InvoiceMe</a>
+				<ul class="nav">
+					<li><%= link_to "Clients", clients_path %></li>
+				</ul>	
+					
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<%= yield %>
+	</div>
 
 </body>
 </html>

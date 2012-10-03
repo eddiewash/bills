@@ -1,29 +1,24 @@
-<h1>Listing clients</h1>
+<div class="page-header">
+	<h1>Clients</h1>
+</div>
 
 <table>
   <tr>
     <th>Client name</th>
-    <th>Address1</th>
-    <th>Address2</th>
     <th>City</th>
     <th>State</th>
-    <th>Notes</th>
     <th></th>
-    <th></th>
-    <th></th>
+
   </tr>
 
 <% @clients.each do |client| %>
   <tr>
     <td><%= client.client_name %></td>
-    <td><%= client.address1 %></td>
-    <td><%= client.address2 %></td>
     <td><%= client.city %></td>
     <td><%= client.state %></td>
-    <td><%= client.notes %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', client %> |
+    <%= link_to 'Edit', edit_client_path(client) %> |
+    <%= link_to 'Destroy', client, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
