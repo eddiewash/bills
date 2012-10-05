@@ -13,6 +13,7 @@
 
 <% @clients.each do |client| %>
   <tr>
+    <td><%= client.user.first_name %>
     <td><%= client.client_name %></td>
     <td><%= client.city %></td>
     <td><%= client.state %></td>

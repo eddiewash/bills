@@ -1,8 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <div class="page-header">
 	<h1><%= @client.client_name %></h1>
 </div>
+
+<p>
+  <b>User:</b>
+  <%= @client.user.full_name %>
+</p>
 
 <p>
   <b>Address1:</b>
