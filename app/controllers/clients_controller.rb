@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :create, :show, :edit]
+  before_filter :authenticate_user!, only: [:new, :create, :show, :edit, :update]
   
   # GET /clients
   # GET /clients.json

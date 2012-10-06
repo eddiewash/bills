@@ -61,8 +61,16 @@ class ClientsControllerTest < ActionController::TestCase
     get :edit, id: @client
     assert_response :success
   end
+  
+  test "should be signed in to update a client" do
+    put :update, id: @client, client: { address1: @client.address1, address2: @client.address2, city: @client.city, client_name: @client.client_name, notes: @client.notes, state: @client.state }
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+  
 
-  test "should update client" do
+  test "should update client when signed in" do
+    sign_in users(:steve)
     put :update, id: @client, client: { address1: @client.address1, address2: @client.address2, city: @client.city, client_name: @client.client_name, notes: @client.notes, state: @client.state }
     assert_redirected_to client_path(assigns(:client))
   end
