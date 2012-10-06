@@ -1,1 +1,6 @@
-
+steve:
+    first_name: "Steve"
+    last_name: "Christie"
+    email: "stevemargc@gmail.com"
+    password: "password"
+    password_confirmation: "password"
