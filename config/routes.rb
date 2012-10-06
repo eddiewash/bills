@@ -1,8 +1,17 @@
 Bills::Application.routes.draw do
   devise_for :users
+  
+  devise_scope :user do
+    get "register", to: "devise/registrations#new", as: :register
+    get "signin", to: "devise/sessions#new", as: :signin
+    get "logout", to: "devise/sessions#destroy", as: :logout
+    
+  end
 
   resources :clients
   root to: 'clients#index'
+  
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
