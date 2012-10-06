@@ -1,4 +1,6 @@
 class ClientsController < ApplicationController
+  before_filter :authenticate_user!, only: [:new]
+  
   # GET /clients
   # GET /clients.json
   def index
