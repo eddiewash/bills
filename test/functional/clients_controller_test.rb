@@ -22,8 +22,15 @@ class ClientsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
+  
+  test "should be signed in to add a client" do
+    post :create, client: { client_name: "XYZ Co."}
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
 
-  test "should create client" do
+  test "should create client when logged in" do
+    sign_in users(:steve)
     assert_difference('Client.count') do
       post :create, client: { address1: @client.address1, address2: @client.address2, city: @client.city, client_name: @client.client_name, notes: @client.notes, state: @client.state }
     end
@@ -31,12 +38,26 @@ class ClientsControllerTest < ActionController::TestCase
     assert_redirected_to client_path(assigns(:client))
   end
 
-  test "should show client" do
+  test "should be signed in to show a client" do
+    get :show, id: @client
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+  
+  test "should show client when signed in" do
+    sign_in users(:steve)
     get :show, id: @client
     assert_response :success
   end
+  
+  test "should be signed in to edit a client" do
+    get :edit, id: @client
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
 
-  test "should get edit" do
+  test "should get edit when signed in" do
+    sign_in users(:steve)
     get :edit, id: @client
     assert_response :success
   end
