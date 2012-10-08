@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    @clients = Client.find_all_by_user_id(current_user)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +16,12 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     @client = Client.find(params[:id])
+    
+    unless current_user.id == @client.user_id
+      flash[:notice] = "You don't have access to that client"
+      redirect_to clients_path
+      return
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,6 +43,11 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
+    unless current_user.id == @client.user_id
+      flash[:notice] = "You don't have access to that client"
+      redirect_to clients_path
+      return
+    end
   end
 
   # POST /clients
