@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Job name:</b>
+  <%= @invoice.job_name %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @invoice.notes %>
+</p>
+
+<p>
+  <b>Service date:</b>
+  <%= @invoice.service_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>

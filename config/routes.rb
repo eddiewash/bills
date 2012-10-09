@@ -1,4 +1,6 @@
 Bills::Application.routes.draw do
+  resources :invoices
+
   devise_for :users
   
   devise_scope :user do

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  job_name: MyString
+  notes: MyText
+  service_date: 2012-10-09
+
+two:
+  job_name: MyString
+  notes: MyText
+  service_date: 2012-10-09
