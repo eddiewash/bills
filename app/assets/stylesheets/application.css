@@ -8,6 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require 'bootstrap.css'
  *= require_self
  *= require_tree .
 */
@@ -17,7 +18,23 @@ body {
 }
 
 .navbar-inner {
-	background-color: red;
+	background-image: none;
+	background-color: rgb(28, 48, 72);
+}
+
+.navbar .nav > li > a {
+	color: white;
+	text-shadow: none;
+}
+
+.navbar .nav > li > a:hover {
+	color: orange;
+}
+
+
+.navbar .brand {
+	color: white;
+	text-shadow: none;
 }
 
 
