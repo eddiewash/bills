@@ -13,6 +13,10 @@ Bills::Application.routes.draw do
   resources :clients
   root to: 'clients#index'
   
+  match '/home' => 'home#index'
+  match '/about' => 'home#about'
+  match '/contact_us' => 'home#contact_us'
+  
   
 
   # The priority is based upon order of creation:

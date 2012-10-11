@@ -1,3 +1,11 @@
+To do:
+research how to redirect on login - start with devise documentation, sign to clients home, need to add a clients home page, on signout go to sign in page
+
+research emails
+
+add state table link to users and clients
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
