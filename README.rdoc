@@ -1,9 +1,16 @@
 To do:
-research how to redirect on login - start with devise documentation, sign to clients home, need to add a clients home page, on signout go to sign in page
+research how to redirect on login - start with devise documentation, sign to clients home, need to add redirect to main#path
 
 research emails
 
 add state table link to users and clients
+correct redirects for no access to go to sign-in page if not logged in
+
+add invoice items table and link to 
+
+research better form layout
+
+add prawn to create pdf
 
 
 == Welcome to Rails

@@ -16,6 +16,7 @@ Bills::Application.routes.draw do
   match '/home' => 'home#index'
   match '/about' => 'home#about'
   match '/contact_us' => 'home#contact_us'
+  match '/main' =>  'main#index'
   
   
 
