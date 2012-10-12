@@ -11,4 +11,10 @@ module ApplicationHelper
     end
   end
   
+  def background
+    if controller.controller_name == "home"
+      link = "background"
+    end
+  end
+  
 end

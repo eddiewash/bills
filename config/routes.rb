@@ -11,7 +11,7 @@ Bills::Application.routes.draw do
   end
 
   resources :clients
-  root to: 'clients#index'
+  root to: 'home#index'
   
   match '/home' => 'home#index'
   match '/about' => 'home#about'
