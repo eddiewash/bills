@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <b>Notes:</b>
-  <%= @invoice.notes %>
+  <b>Notes:</b><br/>
+  <%= @invoice.notes.gsub(/\n/, '<br/>').html_safe %>
 </p>
 
 <p>
