@@ -1,23 +1,23 @@
-<h1>Listing invoices</h1>
+<div>
+	<h1>Invoices</h1>
+</div>
 
-<table>
+<table class="table">
   <tr>
     <th>Job name</th>
+    <th>Service Date</th>
     <th>Notes</th>
-    <th>Service date</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
+
 
 <% @invoices.each do |invoice| %>
   <tr>
     <td><%= invoice.job_name %></td>
     <td><%= invoice.notes %></td>
     <td><%= invoice.service_date %></td>
-    <td><%= link_to 'Show', invoice %></td>
-    <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-    <td><%= link_to 'Destroy', invoice, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show ', invoice %>|
+    <%= link_to ' Edit ', edit_invoice_path(invoice) %>|
+    <%= link_to ' Destroy', invoice, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
