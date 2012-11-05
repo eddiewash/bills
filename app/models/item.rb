@@ -16,7 +16,7 @@ class Item < ActiveRecord::Base
   
   belongs_to :invoice
   
-  validates :name, :quantity, :cost_per, :invoice_id, presence: true
+
   
 
   

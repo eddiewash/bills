@@ -13,6 +13,13 @@
     </div>
     <%= f.input :service_date %>
     <h3>Invoice Details</h3>
+
+    <%= f.simple_fields_for :items do |builder| %>
+      <%= builder.input :name %>
+      <%= builder.input :quantity %>
+      <%= builder.input :cost_per %>
+
+    <% end %>
        
   </div>
 
