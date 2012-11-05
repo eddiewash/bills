@@ -16,7 +16,7 @@ class Invoice < ActiveRecord::Base
   
   belongs_to :client
   has_many :items
-  accepts_nested_attributes_for :items
+  accepts_nested_attributes_for :items, allow_destroy: true
   
   validates :job_name, presence: true
   validates :service_date, presence: true
