@@ -19,7 +19,8 @@
       <%= builder.input :name %>
       <%= builder.input :quantity %>
       <%= builder.input :cost_per %>
-      <%= builder.input :_destroy, :as => :boolean %>
+      <%= builder.input :_destroy, :as => :hidden %>
+      <%= link_to "remove", '#', class: "remove_fields" %>
       </fieldset>
 
     <% end %>
