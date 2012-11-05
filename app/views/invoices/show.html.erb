@@ -15,6 +15,13 @@
   <%= @invoice.service_date %>
 </p>
 
+<p>
+<b>Items:</b><br/>
+<% @invoice.items.each do |i| %>
+  <%= i.name %><br/>
+<% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
 <%= link_to 'Back', invoices_path %>
