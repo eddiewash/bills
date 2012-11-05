@@ -12,7 +12,7 @@
 #
 
 class Invoice < ActiveRecord::Base
-  attr_accessible :job_name, :notes, :service_date, :client_id
+  attr_accessible :job_name, :notes, :service_date, :client_id, :items_attributes
   
   belongs_to :client
   has_many :items
