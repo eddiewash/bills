@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: invoices
+#
+#  id           :integer          not null, primary key
+#  job_name     :string(255)
+#  notes        :text
+#  service_date :date
+#  client_id    :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 require 'test_helper'
 
 class InvoiceTest < ActiveSupport::TestCase
