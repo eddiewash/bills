@@ -13,8 +13,8 @@
 <% @invoices.each do |invoice| %>
   <tr>
     <td><%= invoice.job_name %></td>
-    <td><%= invoice.notes %></td>
     <td><%= invoice.service_date %></td>
+    <td><%= invoice.notes %></td>
     <td><%= link_to 'Show ', invoice %>|
     <%= link_to ' Edit ', edit_invoice_path(invoice) %>|
     <%= link_to ' Destroy', invoice, confirm: 'Are you sure?', method: :delete %></td>
