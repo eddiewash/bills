@@ -14,6 +14,13 @@ class InvoicesController < ApplicationController
   # GET /invoices/1.json
   def show
     @invoice = Invoice.find(params[:id])
+    @balance = 0
+    @invoice.items.each do |i|
+      @balance = @balance + (i.quantity * i.cost_per) 
+    end
+    
+    
+    @balance = 
 
     respond_to do |format|
       format.html # show.html.erb
