@@ -31,6 +31,8 @@ GEM
     annotate (2.5.0)
       rake
     arel (3.0.2)
+    awesome_nested_fields (0.6.0)
+      rails (>= 3.0.0)
     bcrypt-ruby (3.0.1)
     builder (3.0.3)
     coffee-rails (3.2.2)
@@ -118,6 +120,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  awesome_nested_fields
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails

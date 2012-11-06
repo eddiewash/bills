@@ -25,7 +25,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/new.json
   def new
     @invoice = Invoice.new
-    @invoice.items.build
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -57,7 +57,6 @@ class InvoicesController < ApplicationController
   # PUT /invoices/1
   # PUT /invoices/1.json
   def update
-    raise params.inspect
     @invoice = Invoice.find(params[:id])
 
     respond_to do |format|

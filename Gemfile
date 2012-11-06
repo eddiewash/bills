@@ -6,6 +6,7 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'annotate'
+gem 'awesome_nested_fields'
 gem 'devise'
 gem 'simple_form'
 gem 'sqlite3'
