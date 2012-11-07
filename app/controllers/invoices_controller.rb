@@ -68,7 +68,6 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       if @invoice.update_attributes(params[:invoice])
-        InvoiceMailer.send_invoice(@invoice, current_user).deliver
         format.html { redirect_to @invoice, notice: 'Invoice was successfully updated.' }
         format.json { head :no_content }
       else
@@ -88,5 +87,11 @@ class InvoicesController < ApplicationController
       format.html { redirect_to invoices_url }
       format.json { head :no_content }
     end
+  end
+  
+  def email_invoice
+    @invoice = Invoice.find(params[:id])
+    InvoiceMailer.send_invoice(@invoice, current_user).deliver
+    redirect_to invoice_path(@invoice), notice: 'Email was sent.'
   end
 end
