@@ -1,4 +1,14 @@
 
 <%= @greeting %>
 <%= @invoice.job_name %>
+Service Date:
 <%= @invoice.service_date %>
+Total Bill:
+<%= number_to_currency(@balance) %>
+Items:
+<% @invoice.items.each do |i| %>
+Name:<%= i.name %>;
+Quantity: <%= i.quantity %>;
+Cost Per Item: <%= i.cost_per%>
+<% end %>
+
