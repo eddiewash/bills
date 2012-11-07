@@ -68,7 +68,7 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       if @invoice.update_attributes(params[:invoice])
-        InvoiceMailer.send_invoice(@invoice).deliver
+        InvoiceMailer.send_invoice(@invoice, current_user).deliver
         format.html { redirect_to @invoice, notice: 'Invoice was successfully updated.' }
         format.json { head :no_content }
       else
