@@ -1,27 +1,25 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'awesome_nested_fields'
 gem 'devise'
+gem 'pg'
 gem 'prawn'
 gem 'simple_form'
+gem 'thin'
 
 
 
 group :development, :test do
  gem 'annotate'
  gem 'foreman'
- gem 'sqlite3'
 end
 
-group :production do
- gem 'pg'
- gem 'thin'
-end
+
 
 
 
