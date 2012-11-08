@@ -6,7 +6,7 @@
   <tr>
     <th>Job name</th>
     <th>Service Date</th>
-    <th>Notes</th>
+    <th>Invoice Emailed Date</th>
   </tr>
 
 
@@ -14,7 +14,10 @@
   <tr>
     <td><%= invoice.job_name %></td>
     <td><%= invoice.service_date %></td>
-    <td><%= invoice.notes %></td>
+    <td><% invoice.billings.each do |b|%>
+        <%= (b.created_at).strftime("%m/%d/%Y %I:%M %p") %>
+      <% end %>
+      </td>
     <td><%= link_to 'Show ', invoice %>|
     <%= link_to ' Edit ', edit_invoice_path(invoice) %>|
     <%= link_to ' Destroy', invoice, confirm: 'Are you sure?', method: :delete %></td>
