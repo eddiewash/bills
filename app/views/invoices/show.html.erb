@@ -31,7 +31,11 @@
 
 <%= link_to "Printable Receipt (PDF)", invoice_path(@invoice, format: "pdf") %><br/>
 <% if @invoice.client.email? %>
-  <%= link_to 'Send Invoice', email_path(@invoice) %>
+  <%= form_for @invoice, :url => billings_path, :method => :post  do |f| %>
+    <%= f.hidden_field :invoice_id, :value => @invoice.id %>
+    <%= f.submit "Email Invoice to #{@invoice.client.email}" %>
+  <% end %>
+
 <% else %>
   Do you want to email the invoice to your client?
   <%= link_to "Click to add the client's invoice", edit_client_path(@invoice.client) %><br/>
@@ -40,8 +44,4 @@
 <%= link_to 'Back', invoices_path %>
 
 
-<%= form_for @invoice, :url => billings_path, :method => :post  do |f| %>
-  <%= f.hidden_field :invoice_id, :value => @invoice.id %>
-  <%= f.submit %>
-  
-<% end %>
+
