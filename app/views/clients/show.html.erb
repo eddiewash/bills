@@ -2,6 +2,7 @@
 	<h1><%= @client.client_name %></h1>
 </div>
 
+
 <p>
   <b>Address1:</b>
   <%= @client.address1 %>
@@ -23,8 +24,23 @@
 </p>
 
 <p>
-  <b>Notes:</b>
-  <%= @client.notes %>
+  <b>Zip:</b>
+  <%= @client.zip %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= number_to_phone(@client.phone) %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @client.email %>
+</p>
+
+<p>
+  <b>Notes:</b><br/>
+  <%= @client.notes.gsub(/\n/, '<br/>').html_safe %>
 </p>
 
 
