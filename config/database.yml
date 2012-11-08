@@ -20,9 +20,9 @@ test: &TEST
   password:
   host: localhost
 
-  production:
-    adapter: postgresql
-    database: bills_prod
-    username:
-    password:
-    host: localhost
+production:
+  adapter: postgresql
+  database: bills_prod
+  username:
+  password:
+  host: localhost
