@@ -12,6 +12,9 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :integer
+#  zip         :integer
+#  email       :string(255)
+#  phone       :integer
 #
 
 require 'test_helper'

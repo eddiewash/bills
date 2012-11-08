@@ -12,6 +12,9 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :integer
+#  zip         :integer
+#  email       :string(255)
+#  phone       :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
