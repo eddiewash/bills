@@ -8,6 +8,7 @@ gem 'rails', '3.2.3'
 gem 'annotate'
 gem 'awesome_nested_fields'
 gem 'devise'
+gem 'prawn'
 gem 'simple_form'
 gem 'sqlite3'
 
