@@ -12,16 +12,14 @@ gem 'prawn'
 gem 'simple_form'
 gem 'thin'
 
-
-
 group :development, :test do
- gem 'annotate'
- gem 'foreman'
+  gem 'foreman'
+  gem 'pry-rails'
 end
 
-
-
-
+group :development do
+  gem 'annotate'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
