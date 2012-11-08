@@ -5,16 +5,21 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'annotate'
 gem 'awesome_nested_fields'
 gem 'devise'
 gem 'prawn'
 gem 'simple_form'
-gem 'sqlite3'
+
 
 
 group :development, :test do
+ gem 'annotate'
  gem 'foreman'
+ gem 'sqlite3'
+end
+
+group :production do
+ gem 'pg'
 end
 
 
