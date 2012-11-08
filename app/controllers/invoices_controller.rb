@@ -20,11 +20,15 @@ class InvoicesController < ApplicationController
     end
     
     
-    @balance = 
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @invoice }
+      format.html
+      format.pdf do
+        pdf = InvoicePdf.new(@invoice)
+        send_data pdf.render, :filename => "invoice_#{@invoice.id}.pdf", 
+                              :type => 'application/pdf',
+                              :disposition => 'inline'
+      end
     end
   end
 
