@@ -29,7 +29,7 @@
 <% end %>
 </p>
 
-
+<%= link_to "Printable Receipt (PDF)", invoice_path(@invoice, format: "pdf") %><br/>
 <%= link_to 'Send Invoice', email_path(@invoice) %>
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
 <%= link_to 'Back', invoices_path %>
