@@ -38,3 +38,10 @@
 <% end %>
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
 <%= link_to 'Back', invoices_path %>
+
+
+<%= form_for @invoice, :url => billings_path, :method => :post  do |f| %>
+  <%= f.hidden_field :invoice_id, :value => @invoice.id %>
+  <%= f.submit %>
+  
+<% end %>
