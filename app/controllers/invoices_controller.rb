@@ -95,7 +95,11 @@ class InvoicesController < ApplicationController
   
   def email_invoice
     @invoice = Invoice.find(params[:id])
-    InvoiceMailer.send_invoice(@invoice, current_user).deliver
+    @balance = 0
+    @invoice.items.each do |i|
+      @balance = @balance + (i.quantity * i.cost_per) 
+    end
+    InvoiceMailer.send_invoice(@invoice, @balance, current_user).deliver
     redirect_to invoice_path(@invoice), notice: 'Email was sent.'
   end
 end
