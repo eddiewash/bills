@@ -12,10 +12,13 @@
   <% end %>
 
   <%= f.input :client_name %>
+  <%= f.input :phone, :as => :string %>
+  <%= f.input :email %>
   <%= f.input :address1 %>
   <%= f.input :address2 %>
   <%= f.input :city %>
   <%= f.input :state %>
+  <%= f.input :zip, :as => :string %>
   <%= f.input :notes %>
 
 
