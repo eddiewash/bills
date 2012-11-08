@@ -13,6 +13,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/1
   # GET /invoices/1.json
   def show
+    @billing = Billing.new
     @invoice = Invoice.find(params[:id])
     @balance = 0
     @invoice.items.each do |i|

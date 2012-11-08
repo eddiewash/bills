@@ -1,5 +1,7 @@
 Bills::Application.routes.draw do
-  resources :invoices
+  resources :invoices do
+    resources :billings, :only => [:create]
+  end
 
   devise_for :users
   
@@ -18,7 +20,7 @@ Bills::Application.routes.draw do
   match '/contact_us' => 'home#contact_us'
   match '/main' =>  'main#index'
   match '/email/invoices/:id' => 'invoices#email_invoice', :via => :get, :as => "email"
-  match '/billings' => 'billings#create', :via => :post
+  #match '/billings' => 'billings#create', :via => :post
   
   
 
