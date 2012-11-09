@@ -15,8 +15,8 @@ class Invoice < ActiveRecord::Base
   attr_accessible :job_name, :notes, :service_date, :client_id, :items_attributes
   
   belongs_to :client
-  has_many :billings
-  has_many :items
+  has_many :billings, :dependent => :destroy
+  has_many :items, :dependent => :destroy
   accepts_nested_attributes_for :items, allow_destroy: true
   
   validates :job_name, presence: true
