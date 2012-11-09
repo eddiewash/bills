@@ -17,5 +17,13 @@ class Item < ActiveRecord::Base
   
   belongs_to :invoice
   
+  before_save :calculate_total_price
+  
+  private
+  
+  def calculate_total_price
+    self.total_cost = self.quantity * self.cost_per 
+  end
+    
   
 end
