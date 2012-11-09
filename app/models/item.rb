@@ -9,15 +9,13 @@
 #  invoice_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  total_cost :decimal(, )
 #
 
 class Item < ActiveRecord::Base
-  attr_accessible :name, :invoice_id, :quantity, :cost_per
+  attr_accessible :name, :invoice_id, :quantity, :cost_per, :total_cost
   
   belongs_to :invoice
   
-
-  
-
   
 end
