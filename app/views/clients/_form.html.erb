@@ -19,7 +19,7 @@
   <%= f.input :city %>
   <%= f.input :state, :collection => us_states %>
   <%= f.input :zip %>
-  <%= f.input :notes %>
+  <%= f.input :notes, :input_html => { :class => 'span7', :rows => 3 } %>
 
 
   <div class="form-actions">
