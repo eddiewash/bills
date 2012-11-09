@@ -17,4 +17,15 @@ module ApplicationHelper
     end
   end
   
+  def us_states
+    [
+      ["CT", "CT"],
+      ["MA", "MA"],
+      ["NY", "NY"],
+      ["NJ", "NJ"],
+      ["PA", "PA"]
+     
+      ]
+  end
+  
 end

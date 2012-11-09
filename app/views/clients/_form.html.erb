@@ -17,7 +17,7 @@
   <%= f.input :address1 %>
   <%= f.input :address2 %>
   <%= f.input :city %>
-  <%= f.input :state %>
+  <%= f.input :state, :collection => us_states %>
   <%= f.input :zip, :as => :string %>
   <%= f.input :notes %>
 
