@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109155352) do
+ActiveRecord::Schema.define(:version => 20121109184819) do
 
   create_table "billings", :force => true do |t|
     t.integer  "invoice_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20121109155352) do
     t.integer  "user_id"
     t.integer  "zip"
     t.string   "email"
-    t.integer  "phone"
+    t.string   "phone"
   end
 
   add_index "clients", ["user_id"], :name => "index_clients_on_user_id"

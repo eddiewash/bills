@@ -14,7 +14,7 @@
 #  user_id     :integer
 #  zip         :integer
 #  email       :string(255)
-#  phone       :integer
+#  phone       :string(255)
 #
 
 class Client < ActiveRecord::Base
