@@ -3,4 +3,4 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
 	$('#invoice_service_date').datepicker
-		dateFormat: 'mm-dd-yy'
+		dateFormat: 'yy-mm-dd'
