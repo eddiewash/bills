@@ -1,47 +1,46 @@
-<div class="page-header">
-	<h1><%= @client.client_name %></h1>
-</div>
+<h3><%= @client.client_name %></h3>
 
-
-<p>
-  <b>Address1:</b>
-  <%= @client.address1 %>
-</p>
-
-<p>
-  <b>Address2:</b>
-  <%= @client.address2 %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @client.city %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @client.state %>
-</p>
-
-<p>
-  <b>Zip:</b>
-  <%= @client.zip %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= number_to_phone(@client.phone) %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @client.email %>
-</p>
-
-<p>
-  <b>Notes:</b><br/>
-  <%= @client.notes.gsub(/\n/, '<br/>').html_safe %>
-</p>
+<table class="table">
+  <tr>
+    <td><b>Address:</b></td>
+    <td>
+      <%= @client.address1 %><br/>
+      <% if @client.address2? %>
+        <%= @client.address2 %><br/>
+      <% end %>
+      <%= @client.city %>, <%= @client.state %>  <%= @client.zip %><br/>
+    </td>
+  </tr> 
+  
+  <tr>
+    <td><b>Contact:</b></td>
+    <td>
+      <%= @client.poc %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Email:</b></td>
+    <td>
+      <%= @client.email %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Phone:</b></td>
+    <td>
+      <%= @client.phone %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Notes:</b></td>
+    <td>
+      <%= @client.notes.gsub(/\n/, '<br/>').html_safe %>
+    </td>
+  </tr>
+   
+</table>
 
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
