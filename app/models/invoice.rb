@@ -9,6 +9,7 @@
 #  client_id    :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  total        :decimal(, )
 #
 
 class Invoice < ActiveRecord::Base
