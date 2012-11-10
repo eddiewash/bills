@@ -19,7 +19,7 @@
 #
 
 class Client < ActiveRecord::Base
-  attr_accessible :user_id, :address1, :address2, :city, :client_name, :notes, :state, :phone, :email, :zip
+  attr_accessible :user_id, :address1, :address2, :city, :client_name, :poc, :notes, :state, :phone, :email, :zip
   belongs_to :user
   has_many :invoices, :dependent => :destroy
   
