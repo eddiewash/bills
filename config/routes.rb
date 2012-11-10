@@ -2,6 +2,8 @@ Bills::Application.routes.draw do
   resources :invoices do
     resources :billings, :only => [:create]
   end
+  
+  resources :companies
 
   devise_for :users
   
