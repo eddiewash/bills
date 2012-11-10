@@ -1,34 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Job name:</b>
-  <%= @invoice.job_name %>
-</p>
+<h3>Invoice Summary</h3>
 
-<p>
-  <b>Notes:</b><br/>
-  <%= @invoice.notes.gsub(/\n/, '<br/>').html_safe %>
-</p>
+<table class="table">
 
-<p>
-  <b>Service date:</b>
-  <%= @invoice.service_date %>
-</p>
+  <tr>
+    <td><b>Job Name:</b></td>
+    <td><%= @invoice.job_name %></td>
+  </tr> 
+  <tr>
+    <td><b>Notes:</b></td>
+    <td><%= @invoice.notes.gsub(/\n/, '<br/>').html_safe %></td>
+  </tr>
+  <tr>
+    <td><b>Service date:</b></td>
+    <td><%= @invoice.service_date %></td>
+  </tr>  
+  <tr>
+    <td><b>Total Bill:</b></td>
+    <td><%= number_to_currency(@balance) %></td>
+  </tr>  
+  
+</table>
 
-<p>
-  <b>Total Bill:</b>
-  <%= number_to_currency(@balance) %>
-</p>
+<h4>Billing Details: </h4>
 
-<p>
-<b>Items:</b><br/>
-<% @invoice.items.each do |i| %>
-  <b>Name: </b><%= i.name %>;
-  Quantity: <%= i.quantity %>;
-  Cost Per Item: <%= i.cost_per%><br/>
-  Total Cost: <%= i.total_cost %><br/>
-<% end %>
-</p>
+<table class="table">
+
+  <tr>
+    <th>Description</th>
+    <th>Quantity</th>
+    <th>Unit Cost</th>
+    <th>Total Cost</th>
+  </tr>
+
+  <% @invoice.items.each do |i| %>
+    <tr>
+      <td><%= i.name %></td>
+      <td><%= i.quantity %></td>
+      <td><%= i.cost_per %></td>
+      <td><%= i.total_cost %></td>
+    </tr> 
+  <% end %>
+   
+  
+</table>
+
 
 <%= link_to "Printable Receipt (PDF)", invoice_path(@invoice, format: "pdf") %><br/>
 <% if @invoice.client.email? %>
