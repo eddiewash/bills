@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.datepicker
 //= require jquery.nested-fields
 //= require "bootstrap"
 //= require_tree .
