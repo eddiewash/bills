@@ -3,11 +3,16 @@ class InvoiceMailer < ActionMailer::Base
 
   def send_invoice(invoice, balance, current_user)
     @invoice = invoice
-    @greeting = current_user.full_name
+    if @invoice.client.poc?
+      @greeting = @invoice.client.poc
+    else
+      @greeting = @invoice.client.client_name
+    end
+    
     @balance = balance
     pdf = InvoicePdf.new(@invoice, @balance, view_context)
     attachments["invoice.pdf"] = { :mime_type => 'application/pdf', :content => pdf.render } 
 
-    mail to: current_user.email, subject: "Here is your invoice"
+    mail to: @invoice.client.email, subject: "Here is your invoice"
   end
 end
