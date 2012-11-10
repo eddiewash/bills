@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   
   validates :last_name, :presence => true
   has_many :clients, :dependent => :destroy
-  has_one :company
+  has_one :company, :dependent => :destroy
   
   def full_name
     first_name + " " + last_name
