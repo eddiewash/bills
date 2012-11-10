@@ -47,7 +47,7 @@
 </table>
 
 
-<%= link_to "Printable Receipt (PDF)", invoice_path(@invoice, format: "pdf") %><br/>
+<%= link_to "Printable Receipt (PDF)", invoice_path(@invoice, format: "pdf"), :class => 'btn' %><br/><br/>
 <% if @invoice.client.email? %>
   <%= form_for [@invoice, @billing]  do |f| %>
     <%= f.submit "Email Invoice to #{@invoice.client.email}", :class => 'btn' %>
