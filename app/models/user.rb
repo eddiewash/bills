@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
   validates :last_name, :presence => true
   has_many :clients, :dependent => :destroy
   has_one :company, :dependent => :destroy
+  has_many :invoices, :through => :clients
   
   def full_name
     first_name + " " + last_name
