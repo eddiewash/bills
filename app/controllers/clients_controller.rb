@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.find_all_by_user_id(current_user)
+    @clients = current_user.clients
 
     respond_to do |format|
       format.html # index.html.erb
