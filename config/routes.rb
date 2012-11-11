@@ -5,7 +5,11 @@ Bills::Application.routes.draw do
   
   resources :companies
 
-  devise_for :users
+  devise_for :users, :path => "accounts"
+  
+  resources :users do
+    resource :company
+  end
   
   devise_scope :user do
     get "register", to: "devise/registrations#new", as: :register
