@@ -15,9 +15,24 @@ class CompaniesController < ApplicationController
     end
   end
   
+  def show
+    @company = current_user.company
+    if !@company
+      redirect_to new_user_company_path(current_user)
+    end
+  end
   
+  def edit
+    @company = current_user.company
+  end
   
-  
-  
-  
+  def update
+    @company = current_user.company
+    if @company.update_attributes(params[:company])
+      redirect_to @company, notice: 'Settings were successfully updated.'
+    else
+      render :edit
+    end   
+  end
+    
 end
