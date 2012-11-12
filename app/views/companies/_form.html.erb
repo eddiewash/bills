@@ -1,6 +1,6 @@
 <%= current_user.first_name %>
 
-<%= simple_form_for(@company, html: {class: "form-horizontal"}) do |f| %>
+<%= simple_form_for(@company, :html => {:multipart => true, class: "form-vertical"}) do |f| %>
   <% if @company.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@company.errors.count, "error") %> prohibited this client from being saved:</h2>
@@ -21,6 +21,7 @@
   <%= f.input :city %>
   <%= f.input :state, :collection => us_states, :selected => current_user.state %>
   <%= f.input :zip %>
+  <%= f.input :logo, :label => "Upload a logo", :as => :file %>
 
 
   <div class="form-actions">
