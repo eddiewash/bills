@@ -21,6 +21,8 @@
   <%= f.input :city %>
   <%= f.input :state, :collection => us_states, :selected => current_user.state %>
   <%= f.input :zip %>
+  <%= image_tag(@company.logo, :size => "50x550") if @company.logo? %><br/>
+  <%= f.input :remove_logo, :as => :boolean %>
   <%= f.input :remote_logo_url, :label => "Enter a URL for the Company Logo" %>
   <%= f.input :logo, :label => "or Upload one", :as => :file %>
 
