@@ -6,6 +6,7 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'awesome_nested_fields'
+gem 'carrierwave'
 gem 'devise'
 gem 'pg'
 gem 'prawn'
