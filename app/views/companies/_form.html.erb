@@ -21,7 +21,8 @@
   <%= f.input :city %>
   <%= f.input :state, :collection => us_states, :selected => current_user.state %>
   <%= f.input :zip %>
-  <%= f.input :logo, :label => "Upload a logo", :as => :file %>
+  <%= f.input :remote_logo_url, :label => "Enter a URL for the Company Logo" %>
+  <%= f.input :logo, :label => "or Upload one", :as => :file %>
 
 
   <div class="form-actions">
