@@ -2,7 +2,17 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = current_user.invoices
+    invoices = current_user.invoices
+    @open_invoices = []
+    @sent_invoices = []
+    
+    invoices.each do |i|
+      if i.billings.exists?
+        @sent_invoices << i
+      else
+        @open_invoices << i
+      end  
+    end
 
     respond_to do |format|
       format.html # index.html.erb
