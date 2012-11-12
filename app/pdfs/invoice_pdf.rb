@@ -53,7 +53,9 @@ class InvoicePdf < Prawn::Document
     text "Make check payable to:"
     text "#{@invoice.company.name}"
     text "#{@invoice.company.address1}"
-    text "#{@invoice.company.address2}"
+    if @invoice.company.address2?
+      text "#{@invoice.company.address2}"
+    end
     text "#{@invoice.company.city}, #{@invoice.company.state}"
     
     
