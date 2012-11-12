@@ -18,8 +18,10 @@
 #
 
 class Company < ActiveRecord::Base
-  attr_accessible :name, :phone, :email, :address1, :address2, :city, :state, :zip
+  attr_accessible :name, :phone, :email, :address1, :address2, :city, :state, :zip, :logo
   
   belongs_to :user
+  
+  mount_uploader :logo, ImageUploader
   
 end
