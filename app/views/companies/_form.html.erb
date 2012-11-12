@@ -1,5 +1,3 @@
-<%= current_user.first_name %>
-
 <%= simple_form_for(@company, :html => {:multipart => true, class: "form-vertical"}) do |f| %>
   <% if @company.errors.any? %>
     <div id="error_explanation">
@@ -19,10 +17,12 @@
   <%= f.input :address1 %>
   <%= f.input :address2 %>
   <%= f.input :city %>
-  <%= f.input :state, :collection => us_states, :selected => current_user.state %>
+  <%= f.input :state, :collection => us_states %>
   <%= f.input :zip %>
-  <%= image_tag(@company.logo, :size => "50x550") if @company.logo? %><br/>
-  <%= f.input :remove_logo, :as => :boolean %>
+  <% if @company.logo? %>
+    <%= image_tag(@company.logo, :size => "50x550") %><br/>
+    <%= f.input :remove_logo, :as => :boolean %>
+  <% end %>
   <%= f.input :remote_logo_url, :label => "Enter a URL for the Company Logo" %>
   <%= f.input :logo, :label => "or Upload one", :as => :file %>
 
