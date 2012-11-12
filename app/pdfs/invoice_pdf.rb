@@ -8,6 +8,7 @@ class InvoicePdf < Prawn::Document
     client_info
     line_items
     total_price
+    payable_info
   end
   
   def invoice_number
@@ -32,9 +33,9 @@ class InvoicePdf < Prawn::Document
   end
   
   def line_item_rows
-    [["Item", "Qty", "Unit Price"]] +
+    [["Item", "Qty", "Unit Price", "Total Unit Cost"]] +
     @invoice.items.map do |item|
-      [item.name, item.quantity, price(item.cost_per)]
+      [item.name, item.quantity, price(item.cost_per), price(item.total_cost)]
     end
   end
   
@@ -45,6 +46,20 @@ class InvoicePdf < Prawn::Document
   def total_price
     move_down 20
     text "Total Billed Amount: #{price(@total_price)}", size: 16, style: :bold
+  end
+  
+  def payable_info
+    move_down 20
+    text "Make check payable to:"
+    text "#{@invoice.company.name}"
+    text "#{@invoice.company.address1}"
+    text "#{@invoice.company.address2}"
+    text "#{@invoice.company.city}, #{@invoice.company.state}"
+    
+    
+    
+    
+    
     
   end
 end
