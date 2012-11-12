@@ -3,3 +3,32 @@
 
 Project is used to help showcase my growing skills using Ruby, Rails, JQuery, Javascript, HTML and CSS. The project is a work in progress but in a couple of weeks hopefully it will show my potential to get hired as a junior developed. If you like what you see, give me a shout, I'm definitely looking for an opportunity to join a great team.
 
+You can find me on:
+Linkedin: linkedin.com/in/stevejchristie
+Tumblr(rails blog): stevechristie.tumblr.com
+Google+: plus.google.com/101031963510644226189 (I love Google customized urls)
+
+
+
+InvoiceMe is an invoicing app that allows users to create an account from which they will be able to send invoices to their clients. The user account can be customized with logo, billing address information, payment terms. Users can add clients, create invoices with billing details, print pdf invoices, and directly email invoices to the clients.
+
+== Tools used in the code
+
+1. The application uses CarrierWave to upload images which are stored on a bucket using Amazon S3.
+
+2. Twitter Bootstrap and Simple Form were used to add some respectable styling to the application.
+
+3. Prawn is used to create the pdf invoices.
+
+4. Awesome nested forms was used to easily create nested forms.
+
+5. jQuery Datepicker was used to improve the ease of use for date selects
+
+6. Devise was used for user authentication.
+
+7. Foreman was used since local environment variables had to be created for the secret codes required for uploads to S3.
+
+8. Annotate and Pry were used to assist in development.
+
+9. The database is set up with postgres and thin to easily move to Heroku for deployment.
+
