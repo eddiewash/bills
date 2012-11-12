@@ -1,5 +1,7 @@
 <h2>Settings</h2>
 
+<%= image_tag(@company.logo, :size => "150x150") if @company.logo? %><br/>
+
 <table class="table">
   <tr>
     <td><b>Company:</b></td>
@@ -32,6 +34,8 @@
       <%= @company.phone %>
     </td>
   </tr>
+  
+  
   
    
 </table>
