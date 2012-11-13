@@ -18,7 +18,7 @@
   <%= f.input :address1 %>
   <%= f.input :address2 %>
   <%= f.input :city %>
-  <%= f.input :state, :collection => us_states, :selected => current_user.state %>
+  <%= f.input :state, :collection => us_states %>
   <%= f.input :zip %>
   <%= f.input :notes, :input_html => { :class => 'span7', :rows => 3 } %>
 
