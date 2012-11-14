@@ -1,7 +1,7 @@
 
 == InvoiceMe
 
-Project is used to help showcase my growing skills using Ruby, Rails, JQuery, Javascript, HTML and CSS. The project is a work in progress but in a couple of weeks hopefully it will show my potential to get hired as a junior developed. If you like what you see, give me a shout, I'm definitely looking for an opportunity to join a great team.
+Project is used to help showcase my growing skills using Ruby, Rails, JQuery, Javascript, HTML and CSS. The project is a work in progress but in a couple of weeks hopefully it will show my potential to get hired as a junior rails developer. If you like what you see, give me a shout, I'm definitely looking for an opportunity to join a great team.
 
 You can find me on:
 Linkedin: linkedin.com/in/stevejchristie
