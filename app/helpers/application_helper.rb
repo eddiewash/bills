@@ -28,4 +28,14 @@ module ApplicationHelper
       ]
   end
   
+  def payment_terms
+    [
+      ["Payment Due Upon Receipt", 0],
+      ["Net 15", 15],
+      ["Net 30", 30],
+      ["Net 45", 45],
+      ["Net 60", 60],
+      ]
+  end
+  
 end
