@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110214815) do
+ActiveRecord::Schema.define(:version => 20121114181323) do
 
   create_table "billings", :force => true do |t|
     t.integer  "invoice_id"
@@ -48,8 +48,9 @@ ActiveRecord::Schema.define(:version => 20121110214815) do
     t.string   "zip"
     t.string   "logo"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "payment_due"
   end
 
   create_table "invoices", :force => true do |t|
