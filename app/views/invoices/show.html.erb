@@ -52,7 +52,7 @@
   <% end %>
 <% else %>
   Do you want to email the invoice to your client?
-  <%= link_to "Click to add the client's invoice", edit_client_path(@invoice.client) %><br/>
+  <%= link_to "Click to add the client's email", edit_client_path(@invoice.client) %><br/><br/>
 <% end %>
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
 <%= link_to 'Back ', invoices_path %>|
