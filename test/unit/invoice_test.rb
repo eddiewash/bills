@@ -10,6 +10,8 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  total        :decimal(, )
+#  tax1         :decimal(, )
+#  tax2         :decimal(, )
 #
 
 require 'test_helper'

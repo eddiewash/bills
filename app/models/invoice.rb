@@ -10,10 +10,12 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  total        :decimal(, )
+#  tax1         :decimal(, )
+#  tax2         :decimal(, )
 #
 
 class Invoice < ActiveRecord::Base
-  attr_accessible :job_name, :notes, :service_date, :client_id, :items_attributes
+  attr_accessible :job_name, :notes, :service_date, :client_id, :items_attributes, :tax1, :tax2
   
   belongs_to :client
   has_one :user, :through => :client
@@ -24,5 +26,6 @@ class Invoice < ActiveRecord::Base
   
   validates :job_name, presence: true
   validates :service_date, presence: true
+  validates :tax1, :tax2, :numericality => {:greater_than_or_equal_to => 0, :less_than => 15}
   
 end
