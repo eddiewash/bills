@@ -23,6 +23,9 @@
         <th>Description</th>
         <th>Quantity</th>
         <th>Unit Price</th>
+        <th>Tax 1</th>
+        <th>Tax 2</th>
+        
         <th></th>
       </tr>
     
@@ -33,6 +36,8 @@
                 <td><%= builder.input :name, :label => false, placeholder: 'Description', :input_html => { :class => "input-xlarge"}  %></td>
                 <td><%= builder.input :quantity, :label => false,:as => "string", placeholder: 'Quantity', :input_html => { :class => "input-mini"} %></td>
                 <td><%= builder.input :cost_per, :label => false,:as => "string", placeholder: '$ per item', :input_html => { :class => "input-small"} %></td>
+                <td><%= builder.input :tax1, :label => false %></td>
+                <td><%= builder.input :tax2, :label => false %></td>
                 <td><%= link_to "Remove", '#', class: "remove" %></td>
                 <%= builder.hidden_field :id %>
                 <%= builder.hidden_field :_destroy %>
