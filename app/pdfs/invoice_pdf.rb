@@ -82,6 +82,7 @@ class InvoicePdf < Prawn::Document
       text "#{@invoice.company.address2}"
     end
     text "#{@invoice.company.city}, #{@invoice.company.state}"
+    text "Payment Due:  #{(Time.now + (@invoice.company.payment_due).days).strftime("%m/%d/%Y")}"
     
     
     
