@@ -10,10 +10,12 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  total_cost :decimal(, )
+#  tax1       :boolean          default(FALSE)
+#  tax2       :boolean          default(FALSE)
 #
 
 class Item < ActiveRecord::Base
-  attr_accessible :name, :invoice_id, :quantity, :cost_per, :total_cost
+  attr_accessible :name, :invoice_id, :quantity, :cost_per, :total_cost, :tax1, :tax2
   
   belongs_to :invoice
   
