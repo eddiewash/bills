@@ -2,7 +2,7 @@
 	<h1>Clients</h1>
 </div>
 
-<table class="table">
+<table class="table table-hover">
   <tr>
     <th>Client name</th>
     <th>City</th>
@@ -12,17 +12,14 @@
   </tr>
 
 <% @clients.each do |client| %>
-  <tr>
+  <tr data-link="<%= client_path(client) %>">
     <td><%= client.client_name %></td>
     <td><%= client.city %></td>
     <td><%= client.state %></td>
-    <td><%= link_to 'Show', client %> |
-    <%= link_to 'Edit', edit_client_path(client) %> |
-    <%= link_to 'Delete', client, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Client', new_client_path %>
+<%= link_to 'Add a New Client', new_client_path, :class => 'btn' %>
