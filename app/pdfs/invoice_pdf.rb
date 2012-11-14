@@ -14,7 +14,9 @@ class InvoicePdf < Prawn::Document
   
   def invoice_number
     text "Invoice ##{@invoice.id}", size: 30, style: :bold
-    image @invoice.company.logo
+    if @invoice.company.logo?
+      image @invoice.company.logo
+    end
   end
   
   def client_info
