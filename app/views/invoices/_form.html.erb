@@ -17,12 +17,15 @@
       <div class="span4">
         <%= f.input :client_id, collection: Client.all, label_method: :client_name %>
         <%= f.input :job_name %>
+        <%= f.input :service_date, :as => "string" %>
       </div>
       <div class="span8">
-        <%= f.input :notes, :input_html => { :cols => 2000, :rows => 5 } %>
+      <%= f.input :tax1,:as => "string", :input_html => { :class => "input-mini"} %>
+      <%= f.input :tax2,:as => "string", :input_html => { :class => "input-mini"} %>
+      <%= f.input :notes, :input_html => { :class => 'span6', :rows => 5 } %>
       </div>
     </div>
-    <%= f.input :service_date, :as => "string" %>
+    
     <h3>Invoice Details</h3>
     <div class="items">
       <%= f.nested_fields_for :items, show_empty: true do |builder| %>
