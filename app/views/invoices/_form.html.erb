@@ -1,16 +1,5 @@
 <%= simple_form_for(@invoice)  do |f| %>
   <%= f.error_notification %>
-  <% if @invoice.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this client from being saved:</h2>
-
-      <ul>
-      <% @invoice.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="form-inputs">
     <div class="row">
@@ -27,23 +16,43 @@
     </div>
     
     <h3>Invoice Details</h3>
-    <div class="items">
+    <div class="items"> 
+    <%= link_to "Add a Billing Item", '#', class: "add" %><br/><br/>    
+    <table class="table">
+      <tr>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th></th>
+      </tr>
+    
       <%= f.nested_fields_for :items, show_empty: true do |builder| %>
         <% if builder %>
-          <fieldset class="item">
-          <%= builder.input_field :name, placeholder: 'Description' %>
-          <%= builder.input_field :quantity, placeholder: 'Quantity' %>
-          <%= builder.input_field :cost_per, placeholder: '$ per item' %>
-          <%= link_to "Remove Invoice Item", '#', class: "remove" %>
-          <%= builder.hidden_field :id %>
-          <%= builder.hidden_field :_destroy %>
-          </fieldset>
+          <tr>
+            <fieldset class="item">
+                <td><%= builder.input :name, :label => false, placeholder: 'Description', :input_html => { :class => "input-xlarge"}  %></td>
+                <td><%= builder.input :quantity, :label => false,:as => "string", placeholder: 'Quantity', :input_html => { :class => "input-mini"} %></td>
+                <td><%= builder.input :cost_per, :label => false,:as => "string", placeholder: '$ per item', :input_html => { :class => "input-small"} %></td>
+                <td><%= link_to "Remove", '#', class: "remove" %></td>
+                <%= builder.hidden_field :id %>
+                <%= builder.hidden_field :_destroy %>
+            </fieldset>
+          </tr>
         <% else %>
-          <p class="empty">There are no billing items.</p>
+        
+        
+          <td class="empty">There are no billing items.</td>
+        </tr>
         <% end %>
+ 
+        
       <% end %>
-    </div>
-    <%= link_to "Add a Billing Item", '#', class: "add" %>      
+
+
+    
+
+      
+              </table>  
   </div>
 
   <div class="form-actions">

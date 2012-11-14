@@ -19,7 +19,13 @@
 jQuery(function($) {
 
 $(document).ready(function(e) {
-  $('FORM').nestedFields();
+  $('FORM').nestedFields({ 
+	containerSelector: 'table',
+	itemSelector: 'tr'
+	
+	}
+	
+	);
 });
 
 $("tr[data-link]").click(function() {
