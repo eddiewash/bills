@@ -16,7 +16,15 @@
 //= require jquery.nested-fields
 //= require "bootstrap"
 //= require_tree .
+jQuery(function($) {
 
 $(document).ready(function(e) {
   $('FORM').nestedFields();
 });
+
+$("tr[data-link]").click(function() {
+  window.location = this.dataset.link
+})
+
+
+})
