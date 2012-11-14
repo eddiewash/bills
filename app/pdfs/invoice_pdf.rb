@@ -8,6 +8,7 @@ class InvoicePdf < Prawn::Document
     client_info
     line_items
     total_price
+    notes
     payable_info
   end
   
@@ -18,7 +19,8 @@ class InvoicePdf < Prawn::Document
   
   def client_info
     move_down 20
-    text "Client Name: #{@invoice.client.client_name}"
+    text "Invoice for:"
+    text "#{@invoice.client.client_name}"
     text "#{@invoice.client.address1}"
     text "#{@invoice.client.address2}"
     text "#{@invoice.client.city}, #{@invoice.client.state}"
@@ -28,7 +30,10 @@ class InvoicePdf < Prawn::Document
     move_down 20
     table line_item_rows do
       row(0).font_style = :bold
-      columns(1..2).align = :right
+      columns(1..3).align = :right
+      column(0).width = 280
+      column(1).width = 60
+      column(2..3).width = 100
       self.row_colors = ["DDDDDD", "FFFFFF"]
       self.header = true
     end
@@ -46,9 +51,25 @@ class InvoicePdf < Prawn::Document
   end
   
   def total_price
-    move_down 20
-    text "Total Billed Amount: #{price(@total_price)}", size: 16, style: :bold
+    table total_item_row do
+      row(0).font_style = :bold
+      columns(0).align = :right
+      column(0).width = 540
+    end
   end
+  
+  def total_item_row
+    [["Total Billed Amount: #{price(@total_price)}"]]
+  end
+  
+  
+  
+  def notes
+    move_down 20
+    text "Notes:"
+    text "#{@invoice.notes}"
+  end
+    
   
   def payable_info
     move_down 20
