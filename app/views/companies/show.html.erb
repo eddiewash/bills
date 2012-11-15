@@ -1,4 +1,6 @@
-<h2>Settings</h2>
+<h2>Settings</h2><br/>
+
+<h3>Your settings enable you to customize your invoices:</h3>
 
 <div><%= image_tag(@company.logo, :size => "150x150") if @company.logo? %><br/><br/></div>
 
@@ -31,7 +33,7 @@
   <tr>
     <td><b>Phone:</b></td>
     <td>
-      <%= @company.phone %>
+      <%= number_to_phone(@company.phone) %>
     </td>
   </tr>
   
