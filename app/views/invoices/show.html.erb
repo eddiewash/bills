@@ -36,8 +36,8 @@
     <tr>
       <td><%= i.name %></td>
       <td><%= i.quantity %></td>
-      <td><%= i.cost_per %></td>
-      <td><%= i.total_cost %></td>
+      <td><%= number_to_currency(i.cost_per) %></td>
+      <td><%= number_to_currency(i.total_cost) %></td>
     </tr> 
   <% end %>
    
