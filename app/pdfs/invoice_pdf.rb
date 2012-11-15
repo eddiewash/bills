@@ -61,15 +61,17 @@ class InvoicePdf < Prawn::Document
   end
   
   def total_item_row
-    [["Subtotal: #{price(@invoice.subtotal)}\nTax \u00B9: #{price(@invoice.total_tax1)} \nTax \u00B2: #{price(@invoice.total_tax2)} \nTotal Billed Amount: #{price(@invoice.total)}"]]
+    [["Subtotal: #{price(@invoice.subtotal)}\nTax \u00B9: #{price(@invoice.total_tax1)}\nTax \u00B2: #{price(@invoice.total_tax2)}\nTotal Billed Amount: #{price(@invoice.total)}"]]
   end
   
   
   
   def notes
     move_down 20
-    text "Notes:"
-    text "#{@invoice.notes}"
+    if @invoice.notes?
+      text "Notes:"
+      text "#{@invoice.notes}"
+    end
   end
     
   
