@@ -25,12 +25,6 @@ class InvoicesController < ApplicationController
   def show
     @billing = Billing.new
     @invoice = Invoice.find(params[:id])
-    @balance = 0
-    @invoice.items.each do |i|
-      @balance = @balance + (i.quantity * i.cost_per) 
-    end
-    
-    
 
     respond_to do |format|
       format.html
