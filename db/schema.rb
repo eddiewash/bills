@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114233640) do
+ActiveRecord::Schema.define(:version => 20121115002230) do
 
   create_table "billings", :force => true do |t|
     t.integer  "invoice_id"
@@ -63,6 +63,9 @@ ActiveRecord::Schema.define(:version => 20121114233640) do
     t.decimal  "total"
     t.decimal  "tax1"
     t.decimal  "tax2"
+    t.decimal  "subtotal"
+    t.decimal  "total_tax1"
+    t.decimal  "total_tax2"
   end
 
   create_table "items", :force => true do |t|

@@ -12,6 +12,9 @@
 #  total        :decimal(, )
 #  tax1         :decimal(, )
 #  tax2         :decimal(, )
+#  subtotal     :decimal(, )
+#  total_tax1   :decimal(, )
+#  total_tax2   :decimal(, )
 #
 
 require 'test_helper'

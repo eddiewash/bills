@@ -12,10 +12,15 @@
 #  total        :decimal(, )
 #  tax1         :decimal(, )
 #  tax2         :decimal(, )
+#  subtotal     :decimal(, )
+#  total_tax1   :decimal(, )
+#  total_tax2   :decimal(, )
 #
 
 class Invoice < ActiveRecord::Base
-  attr_accessible :job_name, :notes, :service_date, :client_id, :items_attributes, :tax1, :tax2
+  attr_accessible :items_attributes, :job_name, :notes, :service_date, :client_id,  :tax1, :tax2, :subtotal, :total_tax1, :total_tax2
+  
+  before_save :calculate_totals
   
   belongs_to :client
   has_one :user, :through => :client
@@ -27,5 +32,19 @@ class Invoice < ActiveRecord::Base
   validates :job_name, presence: true
   validates :service_date, presence: true
   validates :tax1, :tax2, :numericality => {:greater_than_or_equal_to => 0, :less_than => 15}, :allow_blank => true
+  
+  private
+  
+  def calculate_totals
+    self.subtotal = 0
+    
+    self.items.each do |i|
+      unless i.marked_for_destruction?
+        self.subtotal = self.subtotal + (i.quantity * i.cost_per)
+      end
+    end
+    
+    
+  end
   
 end
