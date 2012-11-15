@@ -44,7 +44,16 @@ class InvoicePdf < Prawn::Document
   def line_item_rows
     [["Item", "Qty", "Unit Price", "Total Unit Cost"]] +
     @invoice.items.map do |item|
-      [item.name, item.quantity, price(item.cost_per), price(item.total_cost)]
+      [item.name, item.quantity, price(item.cost_per), 
+        price(item.total_cost) +
+        if item.tax1 && item.tax2
+          "\u00B9 \u00B2 "
+        elsif item.tax1
+          "\u00B9"
+        elsif item.tax2
+          "\u00B2"
+        end
+        ]
     end
   end
   
