@@ -19,13 +19,15 @@
     <td><%= number_to_currency(@invoice.subtotal) %></td>
   </tr>
   <tr>
-    <td><b>Tax:</b></td>
+    <td><b>Tax: ( <%= @invoice.tax1 %>% )</b></td>
     <td><%= number_to_currency(@invoice.total_tax1) %></td>
   </tr>
-  <tr>
-    <td><b>Tax 2:</b></td>
-    <td><%= number_to_currency(@invoice.total_tax2) %></td>
-  </tr>
+  <% if @invoice.total_tax2 > 0 %>
+    <tr>
+      <td><b>Tax 2: ( <%= @invoice.tax2 %>% )</b></td>
+      <td><%= number_to_currency(@invoice.total_tax2) %></td>
+    </tr>
+  <% end %>
   <tr>
     <td><b>Amount Due:</b></td>
     <td><%= number_to_currency(@invoice.total) %></td>
@@ -49,8 +51,15 @@
     <tr>
       <td><%= i.name %></td>
       <td><%= i.quantity %></td>
-      <td><%= number_to_currency(i.cost_per) %></td>
-      <td><%= number_to_currency(i.total_cost) %></td>
+      <td><%= number_to_currency(i.cost_per) %> </td>
+      <td><%= number_to_currency(i.total_cost) %>
+      <% if i.tax1? %>
+        &#185;
+      <% end %>
+      <% if i.tax2? %>
+        &#178;
+      <% end %>
+      </td>
     </tr> 
   <% end %>
    
