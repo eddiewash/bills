@@ -18,7 +18,7 @@
 #
 
 class Invoice < ActiveRecord::Base
-  attr_accessible :items_attributes, :job_name, :notes, :service_date, :client_id,  :tax1, :tax2, :subtotal, :total_tax1, :total_tax2
+  attr_accessible :items_attributes, :job_name, :notes, :service_date, :client_id,  :tax1, :tax2
   
   before_save :calculate_totals
   
@@ -37,12 +37,22 @@ class Invoice < ActiveRecord::Base
   
   def calculate_totals
     self.subtotal = 0
+    self.total_tax1 = 0
+    self.total_tax2 = 0
     
     self.items.each do |i|
       unless i.marked_for_destruction?
         self.subtotal = self.subtotal + (i.quantity * i.cost_per)
+        if i.tax1?
+          self.total_tax1 = self.total_tax1 + (i.quantity * i.cost_per)*(self.tax1/100)
+        end
+        if i.tax2?
+          self.total_tax2 = self.total_tax2 + (i.quantity * i.cost_per)*(self.tax2/100)
+        end
       end
     end
+    
+    self.total = self.subtotal + self.total_tax1 + self.total_tax2
     
     
   end
