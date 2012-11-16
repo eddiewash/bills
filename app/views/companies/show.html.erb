@@ -15,11 +15,7 @@
   <tr>
     <td><b>Address:</b></td>
     <td>
-      <%= @company.address1 %><br/>
-      <% if @company.address2? %>
-        <%= @company.address2 %><br/>
-      <% end %>
-      <%= @company.city %>, <%= @company.state %>  <%= @company.zip %><br/>
+      <%= @company.address.gsub(/\n/, '<br/>').html_safe %>
     </td>
   </tr> 
   

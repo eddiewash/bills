@@ -4,11 +4,7 @@
   <%= f.input :name %>
   <%= f.input :phone %>
   <%= f.input :email %>
-  <%= f.input :address1 %>
-  <%= f.input :address2 %>
-  <%= f.input :city %>
-  <%= f.input :state, :collection => us_states %>
-  <%= f.input :zip %>
+  <%= f.input :address, :input_html => { :rows => 5 } %>
   <%= f.input :payment_due, :collection => payment_terms %>
   <% if @company.logo? %>
     <%= image_tag(@company.logo, :size => "50x550") %><br/>
