@@ -42,12 +42,12 @@ class Invoice < ActiveRecord::Base
     
     self.items.each do |i|
       unless i.marked_for_destruction?
-        self.subtotal = self.subtotal + (i.quantity * i.cost_per)
+        self.subtotal += i.quantity * i.cost_per
         if i.tax1?
-          self.total_tax1 = self.total_tax1 + (i.quantity * i.cost_per)*(self.tax1/100)
+          self.total_tax1 += (i.quantity * i.cost_per)*(self.tax1/100)
         end
         if i.tax2?
-          self.total_tax2 = self.total_tax2 + (i.quantity * i.cost_per)*(self.tax2/100)
+          self.total_tax2 += (i.quantity * i.cost_per)*(self.tax2/100)
         end
       end
     end
