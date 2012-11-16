@@ -5,11 +5,7 @@
   <%= f.input :poc, :label => "Point of Contact" %>
   <%= f.input :phone %>
   <%= f.input :email %>
-  <%= f.input :address1 %>
-  <%= f.input :address2 %>
-  <%= f.input :city %>
-  <%= f.input :state, :collection => us_states %>
-  <%= f.input :zip %>
+  <%= f.input :address, :input_html => { :rows => 5 } %>
   <%= f.input :notes, :input_html => { :class => 'span7', :rows => 3 } %>
 
 

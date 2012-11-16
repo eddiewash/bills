@@ -4,11 +4,7 @@
   <tr>
     <td><b>Address:</b></td>
     <td>
-      <%= @client.address1 %><br/>
-      <% if @client.address2? %>
-        <%= @client.address2 %><br/>
-      <% end %>
-      <%= @client.city %>, <%= @client.state %>  <%= @client.zip %><br/>
+      <%= @client.address.gsub(/\n/, '<br/>').html_safe %>
     </td>
   </tr> 
   
