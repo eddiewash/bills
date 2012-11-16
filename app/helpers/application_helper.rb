@@ -38,4 +38,14 @@ module ApplicationHelper
       ]
   end
   
+  def show_payment_terms(term)
+    {
+        60 => 'Net 60',
+        45 => 'Net 45',
+        30 => 'Net 30',
+        15 => 'Net 15',
+        0  => "Due upon receipt"
+      }[term]
+  end
+  
 end
