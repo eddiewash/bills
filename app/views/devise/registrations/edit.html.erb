@@ -6,11 +6,7 @@
   <%= f.input :first_name %>
   <%= f.input :last_name %>
   <%= f.input :email %>
-  <%= f.input :address1 %>
-  <%= f.input :address2 %>
-  <%= f.input :city %>
-  <%= f.input :state, :collection => us_states, :selected => "MA" %>
-  <%= f.input :zip %>
+  <%= f.input :address, :input_html => { :rows => 5 } %>
   <%= f.input :password, :autocomplete => "off", :hint => 'Leave blank if you don\'t want to change it.' %>
   <%= f.input :password_confirmation, :autocomplete => "off" %>
   <%= f.input :current_password, :hint => 'We need your current password to confirm your changes.' %>
