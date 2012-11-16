@@ -23,9 +23,7 @@ class InvoicePdf < Prawn::Document
     move_down 20
     text "Invoice for:"
     text "#{@invoice.client.client_name}"
-    text "#{@invoice.client.address1}"
-    text "#{@invoice.client.address2}"
-    text "#{@invoice.client.city}, #{@invoice.client.state}"
+    text "#{@invoice.client.address}"
   end
   
   def line_items
@@ -88,11 +86,7 @@ class InvoicePdf < Prawn::Document
     move_down 20
     text "Make check payable to:"
     text "#{@invoice.company.name}"
-    text "#{@invoice.company.address1}"
-    if @invoice.company.address2?
-      text "#{@invoice.company.address2}"
-    end
-    text "#{@invoice.company.city}, #{@invoice.company.state}"
+    text "#{@invoice.company.address}"
     if @invoice.company.payment_due
       text "Payment Due:  #{(Time.now + (@invoice.company.payment_due).days).strftime("%m/%d/%Y")}"
     end
