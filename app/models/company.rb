@@ -6,20 +6,16 @@
 #  name        :string(255)
 #  phone       :string(255)
 #  email       :string(255)
-#  address1    :string(255)
-#  address2    :string(255)
-#  city        :string(255)
-#  state       :string(255)
-#  zip         :string(255)
 #  logo        :string(255)
 #  user_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  payment_due :integer
+#  address     :text
 #
 
 class Company < ActiveRecord::Base
-  attr_accessible :name, :phone, :email, :address1, :address2, :city, :state, :zip, :logo, :remote_logo_url, :remove_logo, :payment_due
+  attr_accessible :name, :phone, :email, :address, :logo, :remote_logo_url, :remove_logo, :payment_due
   
   belongs_to :user
   
