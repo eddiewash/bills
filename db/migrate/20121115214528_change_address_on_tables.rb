@@ -19,7 +19,7 @@ class ChangeAddressOnTables < ActiveRecord::Migration
   def down
     add_column :clients, :address1, :string
     add_column :clients, :address2, :string
-    adde_column :clients, :city, :string
+    add_column :clients, :city, :string
     add_column :clients, :state, :string
     add_column :clients, :zip, :string
     add_column :companies, :address1, :string
