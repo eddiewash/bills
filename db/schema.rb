@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115214528) do
+ActiveRecord::Schema.define(:version => 20121116180727) do
 
   create_table "billings", :force => true do |t|
     t.integer  "invoice_id"
@@ -75,11 +75,6 @@ ActiveRecord::Schema.define(:version => 20121115214528) do
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "address1"
-    t.string   "address2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
@@ -92,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20121115214528) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.text     "address"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
