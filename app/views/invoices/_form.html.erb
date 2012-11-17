@@ -9,8 +9,17 @@
         <%= f.input :service_date, :as => "string" %>
       </div>
       <div class="span8">
-      <%= f.input :tax1,:as => "string", :input_html => { :class => "input-mini"} %>
-      <%= f.input :tax2,:as => "string", :input_html => { :class => "input-mini"} %>
+      <div id="tax1">
+        <%= f.input :tax1,:as => "string", :input_html => { :class => "input-mini"} %>
+        <div id="tax1_links">
+          <%= link_to "Remove Tax", "#", :id => 'removeTax1' %> | 
+          <%= link_to "Add another tax", "#", :id => 'addTax' %>
+        </div>
+      </div>
+      <div id="tax2">
+        <%= f.input :tax2,:as => "string", :input_html => { :class => "input-mini", :id => "tax2_amount"} %>
+        <%= link_to "Remove Tax", "#", :id => 'removeTax2' %>
+      </div>
       <%= f.input :notes, :input_html => { :class => 'span6', :rows => 5 } %>
       </div>
     </div>
@@ -23,8 +32,8 @@
         <th>Description</th>
         <th>Quantity</th>
         <th>Unit Price</th>
-        <th>Tax 1</th>
-        <th>Tax 2</th>
+        <th class="tax1">Tax 1</th>
+        <th class="tax2">Tax 2</th>
         
         <th></th>
       </tr>
@@ -36,8 +45,8 @@
                 <td><%= builder.input :name, :label => false, placeholder: 'Description', :input_html => { :class => "input-xlarge"}  %></td>
                 <td><%= builder.input :quantity, :label => false,:as => "string", placeholder: 'Quantity', :input_html => { :class => "input-mini"} %></td>
                 <td><%= builder.input :cost_per, :label => false,:as => "string", placeholder: '$ per item', :input_html => { :class => "input-small"} %></td>
-                <td><%= builder.input :tax1, :label => false %></td>
-                <td><%= builder.input :tax2, :label => false %></td>
+                <td class="tax1"><%= builder.input :tax1, :label => false, :input_html => { :class => "tax1"} %></td>
+                <td class="tax2"><%= builder.input :tax2, :label => false, :input_html => { :class => "tax2"} %></td>
                 <td><%= link_to "Remove", '#', class: "remove" %></td>
                 <%= builder.hidden_field :id %>
                 <%= builder.hidden_field :_destroy %>
