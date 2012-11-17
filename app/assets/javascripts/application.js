@@ -62,7 +62,7 @@ $("a#addTax").click(function(){
 	$("div#tax2").show();
 	$("th.tax2").show();
 	$("td.tax2").show();
-	$("div#tax1_links").hide();
+	$("a.tax1_links").hide();
 });
 $("#removeTax2").click(function(){
 	event.preventDefault();
@@ -71,14 +71,14 @@ $("#removeTax2").click(function(){
 	$("td.tax2").hide();
 	$("input.tax2").prop("checked", false);
 	$("div#tax2 input").val(null);
-	$("div#tax1_links").show();
+	$("a.tax1_links").show();
 });
 $("#removeTax1").click(function(){
 	event.preventDefault();
 	$("th.tax1").hide();
 	$("td.tax1").hide();
 	$("input.tax1").prop("checked", false);
-	$("div#tax1 input").val(0)
+	$("div#tax1 input").val(0);
 
 });
 
