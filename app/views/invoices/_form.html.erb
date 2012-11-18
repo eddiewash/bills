@@ -1,6 +1,6 @@
 <%= simple_form_for(@invoice)  do |f| %>
   <%= f.error_notification %>
-
+  
   <div class="form-inputs">
     <div class="row">
       <div class="span4">
@@ -10,16 +10,19 @@
       </div>
       <div class="span8">
       <div id="tax1">
-      <%= f.input :tax1 do %>
+      <%= f.input :tax1, :label => "Tax" do %>
         <%= f.input_field :tax1, :as => "string", :class => "input-mini" %>
-        <%= link_to "Remove Tax |", "#", :id => 'removeTax1', :class => "tax1_links" %>
-        <%= link_to " Add another tax", "#", :id => 'addTax', :class => "tax1_links" %>
+        <span>%</span>
+        
+        <%= link_to "Remove Tax ", "#", :id => 'removeTax1', :class => "tax1_links" %><span class= "tax1_links">|<span>
+        <%= link_to " Add Tax", "#", :id => 'addTax', :class => "tax1_links" %>
       <% end %>
 
       </div>
       <div id="tax2">
-        <%= f.input :tax1 do %>
+        <%= f.input :tax2, :label => "Tax 2" do %>
           <%= f.input_field :tax2,:as => "string", :class => "input-mini", :id => "tax2_amount" %>
+          <span>%</span>
           <%= link_to "Remove Tax", "#", :id => 'removeTax2' %>
         <% end %>
       </div>
