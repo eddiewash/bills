@@ -18,70 +18,112 @@
 //= require_tree .
 jQuery(function($) {
 
-
+// Awesome_nested_fields Add Item  and Remove Item Links
 $('FORM').nestedFields({
-	
-		
-			afterInsert: function() {
-				
-				if (!$("div#tax2 input").val()) {
+	afterInsert: function() {
+		if (!$("div#tax2 input").val()) {
 			$("td.tax2").hide()
 	  };
 		if (!$("div#tax1 input").val()) {
-	$("td.tax1").hide()
-};
-	
+			$("td.tax1").hide()
+		};
 	}, 
   containerSelector: 'table',
   itemSelector: 'tr',
-}		
-);
+});
 
-
-
-
-
+// makes tr's clickable
 $("tr[data-link]").click(function() {
   window.location = this.dataset.link
 });
 
 // jquery for hiding and displaying tax
 
+// changes to tax input
+$("div#tax1 input").change(function() {
+	if ($("div#tax1 input").val() > 0) {
+		showTax1Table();
+	}
+	if ($("div#tax1 input").val() <= 0) {
+		hideTax1Table();
+	}	
+});
 
-if ( !$("div#tax2 input").val()) {
-	$("div#tax2").hide();	
-	$("th.tax2").hide();
-	$("td.tax2").hide();
+// changes to tax input
+$("div#tax2 input").change(function() {
+	if ($("div#tax2 input").val() > 0) {
+		showTax2Table();
+	}
+	if ($("div#tax2 input").val() <= 0) {
+		hideTax2Table();
+	}	
+});
+
+// hide tax1 if value is 0
+if ( $("div#tax1 input").val() <=0 ) {	
+	$("div#tax1 input").val(null);
+	hideTax1Table();
 }
-else {$("div#tax1_links").hide();}
+
+// hide tax2 if value is 0
+if ( $("div#tax2 input").val() <=0 ) {
+	hideTax2Form ();	
+	hideTax2Table();
+	
+}
 
 
-
-$("a#addTax").click(function(){
-	event.preventDefault();
-	$("div#tax2").show();
-	$("th.tax2").show();
-	$("td.tax2").show();
-	$("a.tax1_links").hide();
-});
-$("#removeTax2").click(function(){
-	event.preventDefault();
-	$("div#tax2").hide();
-	$("th.tax2").hide();
-	$("td.tax2").hide();
-	$("input.tax2").prop("checked", false);
-	$("div#tax2 input").val(null);
-	$("a.tax1_links").show();
-});
+//Remove Tax Link (Tax 1)
 $("#removeTax1").click(function(){
 	event.preventDefault();
+	hideTax1Table();
+	$("div#tax1 input").val(0);
+});
+
+// Add Tax Link
+$("a#addTax").click(function(){
+	event.preventDefault();
+	showTax2Form();
+	$(".tax1_links").hide();
+});
+
+// Remove Tax Link (2)
+$("#removeTax2").click(function(){
+	event.preventDefault();
+	hideTax2Form();
+	hideTax2Table();
+	$(".tax1_links").show();
+});
+
+function hideTax1Table() {
 	$("th.tax1").hide();
 	$("td.tax1").hide();
 	$("input.tax1").prop("checked", false);
-	$("div#tax1 input").val(0);
+}
 
-});
+function showTax1Table() {
+	$("th.tax1").show();
+	$("td.tax1").show();
+}
 
+function showTax2Form (){
+	$("div#tax2").show();	
+}
 
+function showTax2Table (){
+	$("th.tax2").show();
+	$("td.tax2").show();
+}
+
+function hideTax2Form (){
+	$("div#tax2").hide();
+	$("div#tax2 input").val(null);
+}
+
+function hideTax2Table () {
+	$("th.tax2").hide();
+	$("td.tax2").hide();
+	$("input.tax2").prop("checked", false);
+}
 
 })
