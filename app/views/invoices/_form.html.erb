@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <div class="row">
       <div class="span4">
-        <%= f.input :client_id, collection: Client.all, label_method: :client_name %>
+        <%= f.input :client_id, collection: current_user.clients.all, label_method: :client_name %>
         <%= f.input :job_name %>
         <%= f.input :service_date, :as => "string" %>
       </div>
