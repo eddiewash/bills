@@ -9,8 +9,7 @@ class InvoiceMailer < ActionMailer::Base
       @greeting = @invoice.client.client_name
     end
     
-    @balance = balance
-    pdf = InvoicePdf.new(@invoice, @balance, view_context)
+    pdf = InvoicePdf.new(@invoice, view_context)
     attachments["invoice.pdf"] = { :mime_type => 'application/pdf', :content => pdf.render } 
 
     mail to: @invoice.client.email, subject: "Here is your invoice"
