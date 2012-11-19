@@ -1,8 +1,7 @@
 <%= simple_form_for [:invoice, @payment], html: {class: "form-horizontal"} do |f| %>
   <%= f.error_notification %>
-  
   <%= f.input :payment_date, :as => "string" %>
-  <%= f.input :amount %>
+  <%= f.input :amount, :as => "string", :input_html => { :value => (number_with_precision(f.object.amount, :precision => 2))} %>
   <%= f.input :note, :input_html => { :class => 'span7', :rows => 3 } %>
 
 
