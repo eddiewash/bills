@@ -1,0 +1,27 @@
+<div>
+	<h1>Payments</h1>
+</div>
+
+
+<table class="table table-hover">
+  <tr>
+    <th>Payment Date</th>
+    <th>Amount</th>
+    <th>Notes</th>
+    <th></th>
+
+  </tr>
+
+<% @invoice.payments.each do |p| %>
+  <tr data-link="<%= edit_invoice_payment_path(p) %>">
+    <td><%= p.payment_date %></td>
+    <td><%= p.amount %></td>
+    <td><%= p.note %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Back', invoice_path(@invoice) %>
+
