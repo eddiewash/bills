@@ -51,7 +51,7 @@
             <fieldset class="item">
                 <td><%= builder.input :name, :label => false, placeholder: 'Description', :input_html => { :class => "input-xlarge"}  %></td>
                 <td><%= builder.input :quantity, :label => false,:as => "string", placeholder: 'Quantity', :input_html => { :class => "input-mini"} %></td>
-                <td><%= builder.input :cost_per, :label => false,:as => "string", placeholder: '$ per item', :input_html => { :class => "input-small", :value => (number_with_precision(builder.object.cost_per, :precision => 2) || 0)} %></td>
+                <td><%= builder.input :cost_per, :label => false,:as => "string", placeholder: '$ per item', :input_html => { :class => "input-small", :value => (number_with_precision(builder.object.cost_per, :precision => 2))} %></td>
                 
                 <td class="tax1"><%= builder.input :tax1, :label => false, :input_html => { :class => "tax1"} %></td>
                 <td class="tax2"><%= builder.input :tax2, :label => false, :input_html => { :class => "tax2"} %></td>
