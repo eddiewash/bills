@@ -5,6 +5,7 @@ class InvoicePdf < Prawn::Document
     @view = view
     @total_price = total
     invoice_number
+    invoice_header
     client_info
     line_items
     total_price
@@ -16,6 +17,19 @@ class InvoicePdf < Prawn::Document
     if @invoice.company.logo?
       image @invoice.company.logo, :height => 40
     end
+  end
+  
+  def invoice_header
+    move_down 20
+    text "Invoice #: #{@invoice.id}"
+    if @invoice.po_number?
+      text "PO #: #{@invoice.po_number}"
+    end
+    text "Invoice Date: #{(Time.now).strftime("%m/%d/%Y")}"
+    if @invoice.company.payment_due
+      text "Payment Due:  #{(Time.now + (@invoice.company.payment_due).days).strftime("%m/%d/%Y")}"
+    end   
+    
   end
   
   def client_info
@@ -67,7 +81,7 @@ class InvoicePdf < Prawn::Document
   end
   
   def total_item_row
-    [["Subtotal: #{price(@invoice.subtotal)}\nTax \u00B9: #{price(@invoice.total_tax1)}\nTax \u00B2: #{price(@invoice.total_tax2)}\nTotal Billed Amount: #{price(@invoice.total)}"]]
+    [["Subtotal: #{price(@invoice.subtotal)}\nTax \u00B9: #{price(@invoice.total_tax1)}\nTax \u00B2: #{price(@invoice.total_tax2)}\nTotal Billed Amount: #{price(@invoice.total)}" ]]
   end
   
   
@@ -86,9 +100,7 @@ class InvoicePdf < Prawn::Document
     text "Make check payable to:"
     text "#{@invoice.company.name}"
     text "#{@invoice.company.address}"
-    if @invoice.company.payment_due
-      text "Payment Due:  #{(Time.now + (@invoice.company.payment_due).days).strftime("%m/%d/%Y")}"
-    end
+    
     
     
     
