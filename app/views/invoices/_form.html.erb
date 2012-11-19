@@ -7,6 +7,7 @@
         <%= f.input :client_id, collection: current_user.clients.all, label_method: :client_name %>
         <%= f.input :job_name %>
         <%= f.input :service_date, :as => "string" %>
+        <%= f.input :po_number, :label => "PO #" %>
       </div>
       <div class="span8">
       <div id="tax1">
