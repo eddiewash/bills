@@ -17,6 +17,8 @@
 //= require "bootstrap"
 //= require_tree .
 jQuery(function($) {
+	
+$('#invoice_service_date').datepicker({ dateFormat: "yy-mm-dd" });
 
 // Awesome_nested_fields Add Item  and Remove Item Links
 $('FORM').nestedFields({
