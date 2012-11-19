@@ -1,9 +1,8 @@
 class InvoicePdf < Prawn::Document
-  def initialize(invoice, total, view)
+  def initialize(invoice, view)
     super(top_margin: 70)
     @invoice = invoice
     @view = view
-    @total_price = total
     invoice_number
     invoice_header
     client_info

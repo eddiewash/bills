@@ -1,7 +1,7 @@
 class InvoiceMailer < ActionMailer::Base
   default from: "steve@relayhr.com"
 
-  def send_invoice(invoice, balance, current_user)
+  def send_invoice(invoice, current_user)
     @invoice = invoice
     if @invoice.client.poc?
       @greeting = @invoice.client.poc
