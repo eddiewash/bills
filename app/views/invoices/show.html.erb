@@ -53,7 +53,7 @@
     <th>Total Cost</th>
   </tr>
 
-  <% @invoice.items.each do |i| %>
+  <% @invoice.items.sort { |a,b| a.name <=> b.name }.each do |i| %>
     <tr>
       <td><%= i.name %></td>
       <td><%= i.quantity %></td>
