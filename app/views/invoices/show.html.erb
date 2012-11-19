@@ -6,6 +6,12 @@
     <td><b>Job Name:</b></td>
     <td><%= @invoice.job_name %></td>
   </tr> 
+  <% if @invoice.po_number? %>
+    <tr>
+      <td><b>PO #:</b></td>
+      <td><%= @invoice.po_number %></td>
+    </tr>
+  <% end %>
   <tr>
     <td><b>Notes:</b></td>
     <td><%= @invoice.notes.gsub(/\n/, '<br/>').html_safe %></td>
