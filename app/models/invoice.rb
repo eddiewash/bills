@@ -26,6 +26,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :client
   has_one :user, :through => :client
   has_many :billings, :dependent => :destroy
+  has_many :payments, :dependent => :destroy
   has_many :items, :dependent => :destroy
   has_one :company, :through => :user
   accepts_nested_attributes_for :items, allow_destroy: true
