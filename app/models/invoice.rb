@@ -15,10 +15,11 @@
 #  subtotal     :decimal(, )
 #  total_tax1   :decimal(, )
 #  total_tax2   :decimal(, )
+#  po_number    :string(255)
 #
 
 class Invoice < ActiveRecord::Base
-  attr_accessible :items_attributes, :job_name, :notes, :service_date, :client_id,  :tax1, :tax2
+  attr_accessible :items_attributes, :job_name, :po_number, :notes, :service_date, :client_id,  :tax1, :tax2
   
   before_save :calculate_totals
   

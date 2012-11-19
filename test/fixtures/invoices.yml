@@ -15,6 +15,7 @@
 #  subtotal     :decimal(, )
 #  total_tax1   :decimal(, )
 #  total_tax2   :decimal(, )
+#  po_number    :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

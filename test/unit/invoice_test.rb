@@ -15,6 +15,7 @@
 #  subtotal     :decimal(, )
 #  total_tax1   :decimal(, )
 #  total_tax2   :decimal(, )
+#  po_number    :string(255)
 #
 
 require 'test_helper'
