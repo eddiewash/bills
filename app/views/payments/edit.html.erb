@@ -1,4 +1,8 @@
-<h1>Edit payment</h1>
+<div id="edit_header">
+<h1 id="edit_payment">Edit payment</h1>
+<%= link_to ' Delete', invoice_payment_path(@payment), confirm: 'Are you sure?', method: :delete, :class => 'btn float_right' %>
+</div>
+<br/>
 
 <%= render 'form' %>
 
