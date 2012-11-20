@@ -6,7 +6,7 @@ module EmailsHelper
   end
   
   def email_message(invoice)
-    message = "jkdfhjkjdhfjjj\nline2\nline3"
+    message = "PO: #{invoice.po_number}\nAmount: #{invoice.total}"
     return message
   end
 end
