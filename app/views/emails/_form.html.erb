@@ -1,0 +1,10 @@
+<%= simple_form_for [:invoice, @email], html: {class: "form-horizontal"} do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :subject, :as => "string" %>
+  <%= f.input :message, :input_html => { :class => 'span7', :rows => 10 } %>
+
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

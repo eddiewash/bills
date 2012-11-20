@@ -1,7 +1,11 @@
 class EmailsController < ApplicationController
+  include EmailsHelper
   
   def new
+    @invoice = Invoice.find(params[:invoice_id])
     @email = Email.new
+    @email.subject = email_subject(@invoice)
+    @email.message = email_message(@invoice)
   end
   
   def create
