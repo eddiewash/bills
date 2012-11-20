@@ -2,6 +2,7 @@ Bills::Application.routes.draw do
   resources :invoices do
     resources :billings, :only => [:create]
     resources :payments
+    resources :emails
   end
   
   resources :companies
