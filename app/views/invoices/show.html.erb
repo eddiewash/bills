@@ -1,5 +1,24 @@
 <h3>Invoice Summary</h3>
 
+<%= link_to 'Edit', edit_invoice_path(@invoice), :class => 'btn', :id => 'invoice_edit' %>
+<div class="btn-group invoice_nav2">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    More Actions
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><%= link_to "Printable Receipt (PDF)", invoice_path(@invoice, format: "pdf") %></li>
+    <li><%= link_to 'Show Payments', invoice_payment_path(@invoice) %></li>
+    <li><%= link_to ' Delete', invoice_path(@invoice), confirm: 'Are you sure?', method: :delete %></li>
+    
+  </ul>
+</div>
+<div id="balance">
+  Balance:
+  <%= number_to_currency(balance(@invoice)) %>
+  <%= link_to 'Post Payment', new_invoice_payment_path(@invoice), :class => 'btn' %><br/><br/>
+  </div>
+
 <table class="table">
 
   <tr>
@@ -73,7 +92,6 @@
 </table>
 
 
-<%= link_to "Printable Receipt (PDF)", invoice_path(@invoice, format: "pdf"), :class => 'btn' %><br/><br/>
 <% if @invoice.client.email? %>
   <%= form_for [@invoice, @billing]  do |f| %>
     <%= f.submit "Email Invoice to #{@invoice.client.email}", :class => 'btn' %>
@@ -82,13 +100,10 @@
   Do you want to email the invoice to your client?
   <%= link_to "Click to add the client's email", edit_client_path(@invoice.client) %><br/><br/>
 <% end %>
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back ', invoices_path %>|
-<%= link_to ' Delete', invoice_path(@invoice), confirm: 'Are you sure?', method: :delete %>
-Balance:
-<%= balance(@invoice) %>
-<%= link_to 'Post Payment', new_invoice_payment_path(@invoice) %>
-<%= link_to 'Show Payments', invoice_payment_path(@invoice) %>
+
+<%= link_to 'Back ', invoices_path %>
+
+
 
 
 
