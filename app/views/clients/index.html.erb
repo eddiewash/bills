@@ -7,7 +7,7 @@
     <th>Client name</th>
     <th>Email</th>
     <th>Phone</th>
-    <th></th>
+    <th>Address</th>
 
   </tr>
 
@@ -15,8 +15,8 @@
   <tr data-link="<%= client_path(client) %>">
     <td><%= client.client_name %></td>
     <td><%= client.email %></td>
-    <td><%= client.phone %></td>
-    <td><%= client.address %></td>
+    <td><%= number_to_phone(client.phone) %></td>
+    <td><%= client.address.gsub(/\n/, '<br/>').html_safe %></td>
   </tr>
 <% end %>
 </table>
