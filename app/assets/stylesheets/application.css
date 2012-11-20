@@ -132,3 +132,15 @@ body {
 }
 
 /****************/
+
+#edit_payment {
+	display: inline;
+}
+
+.float_right {
+	float: right;
+}
+
+#edit_header {
+	margin-top: 10px;
+}
