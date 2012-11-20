@@ -1,6 +1,6 @@
 <h3>Invoice Summary</h3>
 
-<%= link_to 'Edit', edit_invoice_path(@invoice), :class => 'btn', :id => 'invoice_edit' %>
+<%= link_to 'Edit', edit_invoice_path(@invoice), :class => 'btn invoice_summary' %>
 <div class="btn-group invoice_nav2">
   <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
     More Actions
@@ -13,6 +13,8 @@
     
   </ul>
 </div>
+<%= link_to 'Send Email', new_invoice_email_path(@invoice), :class => 'btn invoice_summary' %>
+
 <div id="balance">
   Balance:
   <%= number_to_currency(balance(@invoice)) %>
@@ -98,17 +100,6 @@
 </table>
 
 
-<% if @invoice.client.email? %>
-  <%= form_for [@invoice, @billing]  do |f| %>
-    <%= f.submit "Email Invoice to #{@invoice.client.email}", :class => 'btn' %>
-  <% end %>
-<% else %>
-  Do you want to email the invoice to your client?
-  <%= link_to "Click to add the client's email", edit_client_path(@invoice.client) %><br/><br/>
-<% end %>
-<%= link_to 'Send Email', new_invoice_email_path(@invoice), :class => 'btn' %>
-
-<%= link_to 'Back ', invoices_path %>
 
 
 
