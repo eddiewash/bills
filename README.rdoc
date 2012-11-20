@@ -20,7 +20,7 @@ InvoiceMe is an invoicing app that allows users to create an account from which 
 
 3. Prawn is used to create the pdf invoices.
 
-4. Awesome nested forms was used to easily create nested forms.
+4. Awesome nested fields was used to easily create nested forms.
 
 5. jQuery Datepicker was used to improve the ease of use for date selects
 
@@ -31,4 +31,6 @@ InvoiceMe is an invoicing app that allows users to create an account from which 
 8. Annotate and Pry were used to assist in development.
 
 9. The database is set up with postgres and thin to easily move to Heroku for deployment.
+
+10. Custom jQuery was added to dynamically display, hide, and update values for tax1 and tax and the related table rows and headers for these 2 fields and to make tr selectable in lieu of adding an eedit button.
 
