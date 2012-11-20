@@ -85,6 +85,8 @@
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
 <%= link_to 'Back ', invoices_path %>|
 <%= link_to ' Delete', invoice_path(@invoice), confirm: 'Are you sure?', method: :delete %>
+Balance:
+<%= balance(@invoice) %>
 <%= link_to 'Post Payment', new_invoice_payment_path(@invoice) %>
 <%= link_to 'Show Payments', invoice_payment_path(@invoice) %>
 
