@@ -16,6 +16,7 @@
 #  total_tax1   :decimal(, )
 #  total_tax2   :decimal(, )
 #  po_number    :string(255)
+#  invoice_date :date
 #
 
 require 'test_helper'
