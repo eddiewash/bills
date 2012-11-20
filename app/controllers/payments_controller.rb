@@ -34,5 +34,11 @@ class PaymentsController < ApplicationController
       render :edit
     end   
   end
+  
+  def destroy
+    @payment = Payment.find(params[:invoice_id])
+    @payment.destroy
+    redirect_to invoice_payment_path(params[:id]), notice: 'Payment was successfully deleted.'
+  end
 
 end
