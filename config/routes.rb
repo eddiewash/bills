@@ -20,7 +20,10 @@ Bills::Application.routes.draw do
     
   end
 
-  resources :clients
+  resources :clients do
+    resources :contacts
+  end
+   
   root to: 'home#index'
   
   match '/home' => 'home#index'
@@ -28,9 +31,7 @@ Bills::Application.routes.draw do
   match '/contact_us' => 'home#contact_us'
   match '/main' =>  'main#index'
   match '/email/invoices/:id' => 'invoices#email_invoice', :via => :get, :as => "email"
-  #match '/billings' => 'billings#create', :via => :post
-  
-  
+    
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
