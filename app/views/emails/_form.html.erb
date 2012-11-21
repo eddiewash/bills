@@ -8,6 +8,7 @@ If this not correct, <%= link_to "Click to update the email address", client_pat
 
 
   <div class="form-actions">
-    <%= f.button :submit, "Send Invoice" %>
+    <%= f.button :submit, "Send Invoice", :class => 'btn-warning' %>
+    <%= link_to 'Cancel', invoice_path(@invoice), :class => 'btn' %>
   </div>
 <% end %>
