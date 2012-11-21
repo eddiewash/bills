@@ -1,0 +1,44 @@
+<h3><%= @contact.name %></h3>
+
+<table class="table">
+  <tr>
+    <td><b>Client:</b></td>
+    <td>
+      <%= @contact.client.client_name %>
+    </td>
+  </tr> 
+  
+  <tr>
+    <td><b>Email:</b></td>
+    <td>
+      <%= @contact.email %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Phone:</b></td>
+    <td>
+      <%= number_to_phone(@contact.phone_work) %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Cell:</b></td>
+    <td>
+      <%= number_to_phone(@contact.phone_cell) %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><b>Notes:</b></td>
+    <td>
+      <%= @contact.notes.gsub(/\n/, '<br/>').html_safe %>
+    </td>
+  </tr>
+   
+</table>
+
+<%= link_to 'Contacts ', client_contacts_path(@client) %> |
+<%= link_to ' Edit ', edit_client_contact_path(@client, @contact) %> |
+<%= link_to 'Back ', clients_path %>|
+<%= link_to ' Delete', client_path(@client), confirm: 'Are you sure you want to delete this client, no take backsies?', method: :delete %>

@@ -1,0 +1,24 @@
+<div>
+	<h1>Contacts: </h1>
+</div>
+
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Cell</th>
+  </tr>
+
+<% @contacts.each do |contact| %>
+  <tr data-link="<%= client_contact_path(@client, contact) %>">
+    <td><%= contact.name %></td>
+    <td><%= contact.email %></td>
+    <td><%= number_to_phone(contact.phone_cell) %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br />
+
+<%= link_to 'Add a New Contact', new_client_contact_path, :class => 'btn' %>
