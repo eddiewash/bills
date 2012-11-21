@@ -18,6 +18,7 @@ class Client < ActiveRecord::Base
   attr_accessible :user_id, :address, :client_name, :poc, :notes, :phone, :email
   belongs_to :user
   has_many :invoices, :dependent => :destroy
+  has_many :contacts, :dependent => :destroy
   
   validates :client_name, presence: true
   
