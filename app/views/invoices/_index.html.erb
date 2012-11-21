@@ -1,5 +1,6 @@
 <table class="table table-hover">
   <tr>
+    <th>Client</th>
     <th>Job Name</th>
     <th>Service Date</th>
     <th>Invoice Emailed Date</th>
@@ -7,6 +8,7 @@
 
 <% invoices.each do |invoice| %>
   <tr data-link="<%= invoice_path(invoice) %>">
+    <td><%= invoice.client.client_name %></td>
     <td><%= invoice.job_name %></td>
     <td><%= (invoice.service_date).strftime("%m/%d/%Y") %></td>
     <td><%= (invoice.billings.last.created_at).strftime("%m/%d/%Y %I:%M %p") if invoice.billings.exists? %></td>
