@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121121133059) do
+ActiveRecord::Schema.define(:version => 20121122013756) do
 
   create_table "billings", :force => true do |t|
     t.integer  "invoice_id"
@@ -52,6 +52,11 @@ ActiveRecord::Schema.define(:version => 20121121133059) do
     t.string  "phone_cell"
     t.text    "notes"
     t.integer "client_id"
+  end
+
+  create_table "email_recipients", :force => true do |t|
+    t.integer "email_id"
+    t.integer "contact_id"
   end
 
   create_table "emails", :force => true do |t|
