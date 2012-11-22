@@ -6,6 +6,8 @@ Bills::Application.routes.draw do
   end
   
   resources :companies
+  
+  resources :email_recipients
 
   devise_for :users, :path => "accounts"
   
