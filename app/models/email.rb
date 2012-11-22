@@ -14,5 +14,6 @@ class Email < ActiveRecord::Base
   attr_accessible :subject, :message, :invoice_id
   
   belongs_to :invoice
+  has_many :email_recipients
    
 end
