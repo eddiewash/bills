@@ -7,7 +7,7 @@ class EmailsController < ApplicationController
       @invoice.invoice_date = Date.today
     end
     @email = Email.new
-    @invoice.contacts.each { |c| @email.email_recipients.build(contact_id: c.id) }
+    @invoice.contacts.where("contacts.email != ?", "").each { |c| @email.email_recipients.build(contact_id: c.id) }
     @email.subject = email_subject(@invoice)
     @email.message = email_message(@invoice)
   end
