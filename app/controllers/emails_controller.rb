@@ -7,6 +7,7 @@ class EmailsController < ApplicationController
       @invoice.invoice_date = Date.today
     end
     @email = Email.new
+    @email.email_recipients.build
     @email.subject = email_subject(@invoice)
     @email.message = email_message(@invoice)
   end
