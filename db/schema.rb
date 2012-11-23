@@ -55,8 +55,10 @@ ActiveRecord::Schema.define(:version => 20121122013756) do
   end
 
   create_table "email_recipients", :force => true do |t|
-    t.integer "email_id"
-    t.integer "contact_id"
+    t.integer  "email_id"
+    t.integer  "contact_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "emails", :force => true do |t|
