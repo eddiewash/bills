@@ -4,19 +4,25 @@ If this not correct, <%= link_to "Click to update the email address", client_pat
 
 <%= simple_form_for [:invoice, @email], html: {class: "form-horizontal"} do |f| %>
   <%= f.error_notification %>
- 
-  <% @invoice.contacts.each do |c|%>    
+
+  <%= f.simple_fields_for :email_recipients do |email_recipients_form| %>
+    <%= email_recipients_form.input :_destroy, as: :radio_buttons %>
+    <%= email_recipients_form.input :contact_id, as: :hidden %>
+  <% end %>
+<%
+=begin
+%>
+  <% @invoice.contacts.each do |c|%>
     <%= f.nested_fields_for :email_recipients, show_empty: true do |builder| %>
-      <% if builder %>
-        <fieldset class="item">
-<%= builder.input :contact_id, :as => :boolean, :input_html => { :value => c.id }, :label => c.name + " (" + c.email + ")" %>
-</fieldset>
-      <% else %>
-      There are no contacts. 
-      <% end %>       
+      <fieldset class="item">
+        <%= builder.input :contact_id, :as => :check_boxes, :input_html => { :value => c.id }, :label => c.name + " (" + c.email + ")" %>
+      </fieldset>
     <% end %>
   <% end %>
-  
+<%
+=end
+%>
+
   <%= f.input :subject, :as => "string" %>
   <%= f.input :message, :input_html => { :class => 'span7', :rows => 10 } %>
 
