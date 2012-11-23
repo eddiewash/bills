@@ -1,13 +1,17 @@
 The invoice will be sent to: <%= @invoice.client.email %>
-If this not correct, <%= link_to "Click to update the email address", client_path(@invoice.client) %><br/><br/>
-
+If this not correct, <%= link_to "Click to update the email address", client_path(@invoice.client) %><br/>
 
 <%= simple_form_for [:invoice, @email], html: {class: "form-horizontal"} do |f| %>
   <%= f.error_notification %>
-
+<% count = 0 %>
   <%= f.simple_fields_for :email_recipients do |email_recipients_form| %>
-    <%= email_recipients_form.input :_destroy, as: :radio_buttons %>
+    <%= email_recipients_form.input :_destroy, as: :boolean, :label => false do %>
+      <%= email_recipients_form.check_box :_destroy, {}, "false", "true" %>
+      <% contact = @invoice.contacts.find(@email.email_recipients[count].contact_id) %>
+      <%= contact.name + " (" + contact.email + ")" %>
+    <% end %>
     <%= email_recipients_form.input :contact_id, as: :hidden %>
+    <% count += 1 %>
   <% end %>
 <%
 =begin
