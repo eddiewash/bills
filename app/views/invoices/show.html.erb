@@ -51,6 +51,12 @@
       <td><%= (@invoice.invoice_date).strftime("%m/%d/%Y") %></td>
     </tr>
   <% end %>
+  <% if @invoice.due_date? %> 
+    <tr>
+      <td><b>Due date:</b></td>
+      <td><%= (@invoice.due_date).strftime("%m/%d/%Y") %></td>
+    </tr>
+  <% end %>
   <tr>
     <td><b>Sub Total:</b></td>
     <td><%= number_to_currency(@invoice.subtotal) %></td>
