@@ -3,21 +3,8 @@ class InvoicesController < ApplicationController
   # GET /invoices.json
   def index
     invoices = current_user.invoices
-    @open_invoices = []
-    @sent_invoices = []
-    
-    invoices.each do |i|
-      if i.billings.exists?
-        @sent_invoices << i
-      else
-        @open_invoices << i
-      end  
-    end
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @invoices }
-    end
+    @open_invoices = invoices.find_all_by_invoice_date(nil)
+    @sent_invoices = invoices.where("invoices.invoice_date IS NOT NULL")    
   end
 
   # GET /invoices/1
@@ -41,12 +28,6 @@ class InvoicesController < ApplicationController
   # GET /invoices/new.json
   def new
     @invoice = Invoice.new
-
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @invoice }
-    end
   end
 
   # GET /invoices/1/edit
