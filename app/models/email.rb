@@ -14,7 +14,7 @@ class Email < ActiveRecord::Base
   attr_accessible :subject, :message, :invoice_id, :email_recipients_attributes
   
   belongs_to :invoice
-  has_many :email_recipients
+  has_many :email_recipients, :dependent => :destroy
     
   accepts_nested_attributes_for :email_recipients
    
