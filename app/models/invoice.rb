@@ -31,6 +31,7 @@ class Invoice < ActiveRecord::Base
   has_many :contacts, :through => :client
   has_many :items, :dependent => :destroy
   has_one :company, :through => :user
+  has_many :emails, :dependent => :destroy
   accepts_nested_attributes_for :items, allow_destroy: true
   
   validates :job_name, presence: true
