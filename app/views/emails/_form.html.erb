@@ -1,5 +1,10 @@
-The invoice will be sent to: <%= @invoice.client.email %>
-If this not correct, <%= link_to "Click to update the email address", client_path(@invoice.client) %><br/>
+<% if @email.email_recipients.blank? == true then %>
+  To send an invoice you will need to either add a contact or add an email address for an existing contact.<br/>
+  <div class="form-actions">
+  <%= link_to "Update contact", client_contacts_path(@invoice.client), :class => 'btn btn-warning ' %>
+  <%= link_to 'Cancel', invoice_path(@invoice), :class => 'btn' %>
+  </div>
+<% else %>
 
 <%= simple_form_for [:invoice, @email], html: {class: "form-horizontal"} do |f| %>
   <%= f.error_notification %>
@@ -34,4 +39,5 @@ If this not correct, <%= link_to "Click to update the email address", client_pat
     <%= f.button :submit, "Send Invoice", :class => 'btn-warning' %>
     <%= link_to 'Cancel', invoice_path(@invoice), :class => 'btn' %>
   </div>
+<% end %>
 <% end %>
