@@ -7,6 +7,7 @@ class InvoiceMailer < ActionMailer::Base
     @recipient = recipient  
     pdf = InvoicePdf.new(@invoice, view_context)
     attachments["invoice.pdf"] = { :mime_type => 'application/pdf', :content => pdf.render } 
-    mail to: @recipient.email, subject: @email.subject
+    email_with_name = "#{@recipient.name} <#{@recipient.email}>"
+    mail to: email_with_name, subject: @email.subject
   end
 end
