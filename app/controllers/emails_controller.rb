@@ -21,9 +21,12 @@ class EmailsController < ApplicationController
     end
 
     if @email.save
-      InvoiceMailer.send_invoice(@invoice, @email, current_user).deliver
+      @email.email_recipients.each do |recipient|
+        r = Contact.find(recipient.contact_id)
+        InvoiceMailer.send_invoice(r, @invoice, @email, current_user).deliver
+      end
       @invoice.save
-      redirect_to invoice_path(@email.invoice_id), notice: 'Email was posted.'
+      redirect_to invoice_path(@email.invoice_id), notice: 'Email was sent.'
     else
       render :new
     end
