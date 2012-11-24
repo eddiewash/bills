@@ -18,19 +18,6 @@
     <%= email_recipients_form.input :contact_id, as: :hidden %>
     <% count += 1 %>
   <% end %>
-<%
-=begin
-%>
-  <% @invoice.contacts.each do |c|%>
-    <%= f.nested_fields_for :email_recipients, show_empty: true do |builder| %>
-      <fieldset class="item">
-        <%= builder.input :contact_id, :as => :check_boxes, :input_html => { :value => c.id }, :label => c.name + " (" + c.email + ")" %>
-      </fieldset>
-    <% end %>
-  <% end %>
-<%
-=end
-%>
 
   <%= f.input :subject, :as => "string" %>
   <%= f.input :message, :input_html => { :class => 'span7', :rows => 10 } %>
