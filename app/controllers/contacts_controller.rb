@@ -16,7 +16,7 @@ class ContactsController < ApplicationController
     @contact.client_id = params[:client_id]
 
     if @contact.save
-      redirect_to client_contact_path, notice: 'Contact was added.' 
+      redirect_to client_contact_path(@client, @contact), notice: 'Contact was added.' 
     else
       render :new
     end
@@ -43,6 +43,13 @@ class ContactsController < ApplicationController
       render :edit
     end
     
+  end
+  
+  def destroy
+    @client = Client.find(params[:client_id])
+    @contact = Contact.find(params[:id])
+    @contact.destroy
+    redirect_to client_contacts_path(@client)
   end
   
 end
