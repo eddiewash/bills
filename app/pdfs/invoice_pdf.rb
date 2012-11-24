@@ -24,9 +24,10 @@ class InvoicePdf < Prawn::Document
     if @invoice.po_number?
       text "PO #: #{@invoice.po_number}"
     end
-    text "Invoice Date: #{(@invoice.invoice_date).strftime("%m/%d/%Y")}"
+    
+    text "Invoice Date: #{(@invoice.invoice_date).strftime("%m/%d/%Y") if @invoice.invoice_date}"
     if @invoice.company.payment_due
-      text "Payment Due:  #{(@invoice.due_date).strftime("%m/%d/%Y")}"
+      text "Payment Due:  #{(@invoice.due_date).strftime("%m/%d/%Y") if @invoice.due_date}"
     end   
     
   end
