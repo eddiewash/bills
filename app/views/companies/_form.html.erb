@@ -12,6 +12,10 @@
   <% end %>
   <%= f.input :remote_logo_url, :label => "Enter a URL for the Company Logo" %>
   <%= f.input :logo, :label => "or Upload one", :as => :file %>
+  <%= "Set up the taxes you frequent use to prefile the taxes for each new invoice!" %><br/>
+  <%= f.input :tax1, :as => :string, :input_html => {:class => "input-small"}, :label => "Tax" %>
+  <%= f.input :tax2, :as => :string, :input_html => {:class => "input-small"}, :label => "Tax 2" %>
+  
 
 
   <div class="form-actions">
