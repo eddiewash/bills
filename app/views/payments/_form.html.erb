@@ -6,6 +6,12 @@
 
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn-warning' %>
+    <% if params[:action] == "edit" %>
+      <%= link_to 'Cancel', invoice_payment_path(@payment.invoice_id), :class => 'btn' %>
+      <%= link_to ' Delete', invoice_payment_path(@payment), confirm: 'Are you sure?', method: :delete, :class => 'btn float_right' %>
+    <% else %>
+      <%= link_to 'Cancel', @invoice, :class => 'btn' %>
+    <% end %>
   </div>
 <% end %>
