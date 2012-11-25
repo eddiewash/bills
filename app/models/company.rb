@@ -15,7 +15,7 @@
 #
 
 class Company < ActiveRecord::Base
-  attr_accessible :name, :phone, :email, :address, :logo, :remote_logo_url, :remove_logo, :payment_due
+  attr_accessible :name, :phone, :email, :address, :logo, :remote_logo_url, :remove_logo, :payment_due, :tax1, :tax2
   
   belongs_to :user
   
