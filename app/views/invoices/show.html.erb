@@ -16,8 +16,10 @@
 <%= link_to 'Send Email', new_invoice_email_path(@invoice), :class => 'btn invoice_summary' %>
 
 <div id="balance">
-  Balance:
-  <%= number_to_currency(balance(@invoice)) %>
+  <% if @invoice.balance? %>
+    Balance:
+    <%= number_to_currency(@invoice.balance) %>
+  <% end %>
   <%= link_to 'Post Payment', new_invoice_payment_path(@invoice), :class => 'btn' %><br/><br/>
   </div>
 
