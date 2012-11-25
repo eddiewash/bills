@@ -19,7 +19,7 @@ class EmailsController < ApplicationController
     @email.invoice_id = params[:invoice_id]
     if !@invoice.invoice_date?
       @invoice.invoice_date = Date.today
-      @invoice.due_date = Date.today + (@invoice.company.payment_due).days
+      @invoice.due_date = Date.today + (@invoice.payment_terms).days
     end
 
     if @email.save
