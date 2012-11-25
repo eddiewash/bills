@@ -53,6 +53,10 @@
       <td><%= (@invoice.invoice_date).strftime("%m/%d/%Y") %></td>
     </tr>
   <% end %>
+  <tr>
+    <td><b>Payment Terms:</b></td>
+    <td><%= show_payment_terms(@invoice.payment_terms) %></td>
+  </tr>
   <% if @invoice.due_date? %> 
     <tr>
       <td><b>Due date:</b></td>
