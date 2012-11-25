@@ -12,6 +12,8 @@
 #  updated_at  :datetime         not null
 #  payment_due :integer
 #  address     :text
+#  tax1        :decimal(, )
+#  tax2        :decimal(, )
 #
 
 class Company < ActiveRecord::Base
