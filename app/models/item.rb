@@ -22,7 +22,7 @@ class Item < ActiveRecord::Base
   before_save :calculate_total_price
   
   validates :name, presence: true
-  validates :quantity, :numericality => { :only_integer => true }
+  validates :quantity, :numericality => true
   validates :cost_per, :format => { :with => /^\d+??(?:\.\d{0,2})?$/ }, :numericality => {:greater_than_or_equal_to => 0, :less_than => 100000}
   
   private
