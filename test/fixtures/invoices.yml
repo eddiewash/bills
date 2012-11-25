@@ -2,21 +2,24 @@
 #
 # Table name: invoices
 #
-#  id           :integer          not null, primary key
-#  job_name     :string(255)
-#  notes        :text
-#  service_date :date
-#  client_id    :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  total        :decimal(, )
-#  tax1         :decimal(, )
-#  tax2         :decimal(, )
-#  subtotal     :decimal(, )
-#  total_tax1   :decimal(, )
-#  total_tax2   :decimal(, )
-#  po_number    :string(255)
-#  invoice_date :date
+#  id             :integer          not null, primary key
+#  job_name       :string(255)
+#  notes          :text
+#  service_date   :date
+#  client_id      :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  total          :decimal(, )
+#  tax1           :decimal(, )
+#  tax2           :decimal(, )
+#  subtotal       :decimal(, )
+#  total_tax1     :decimal(, )
+#  total_tax2     :decimal(, )
+#  po_number      :string(255)
+#  invoice_date   :date
+#  due_date       :date
+#  balance        :decimal(, )
+#  total_payments :decimal(, )
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
