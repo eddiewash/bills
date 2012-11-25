@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124194511) do
+ActiveRecord::Schema.define(:version => 20121124230356) do
 
   create_table "billings", :force => true do |t|
     t.integer  "invoice_id"
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(:version => 20121124194511) do
     t.text     "notes"
     t.date     "service_date"
     t.integer  "client_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.decimal  "total"
     t.decimal  "tax1"
     t.decimal  "tax2"
@@ -85,6 +85,8 @@ ActiveRecord::Schema.define(:version => 20121124194511) do
     t.string   "po_number"
     t.date     "invoice_date"
     t.date     "due_date"
+    t.decimal  "balance"
+    t.decimal  "total_payments"
   end
 
   create_table "items", :force => true do |t|
