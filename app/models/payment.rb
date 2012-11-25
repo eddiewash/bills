@@ -17,6 +17,6 @@ class Payment < ActiveRecord::Base
   belongs_to :invoice
   
   validates :amount, presence: true
-  validates :amount, :format => { :with => /^\d+??(?:\.\d{0,2})?$/ }, :numericality => {:less_than => 100000}    
+  validates :amount, :numericality => {:less_than => 100000}    
   
 end
