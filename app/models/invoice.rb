@@ -20,10 +20,11 @@
 #  due_date       :date
 #  balance        :decimal(, )
 #  total_payments :decimal(, )
+#  payment_terms  :integer
 #
 
 class Invoice < ActiveRecord::Base
-  attr_accessible :items_attributes, :job_name, :po_number, :total_payments, :notes, :service_date, :due_date, :invoice_date, :client_id,  :tax1, :tax2
+  attr_accessible :items_attributes, :job_name, :po_number, :total_payments, :notes, :service_date, :due_date, :invoice_date, :client_id,  :tax1, :tax2, :payment_terms
   
   before_save :calculate_totals
   

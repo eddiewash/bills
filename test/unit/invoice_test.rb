@@ -20,6 +20,7 @@
 #  due_date       :date
 #  balance        :decimal(, )
 #  total_payments :decimal(, )
+#  payment_terms  :integer
 #
 
 require 'test_helper'
