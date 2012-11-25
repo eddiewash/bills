@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
-#  quantity   :integer
+#  quantity   :decimal(, )
 #  cost_per   :decimal(, )
 #  invoice_id :integer
 #  created_at :datetime         not null
