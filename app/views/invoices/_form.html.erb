@@ -10,6 +10,7 @@
         <%= f.input :po_number, :label => "PO #" %>
       </div>
       <div class="span8">
+      <%= f.input :payment_terms, :collection => payment_terms %>
       <div id="tax1">
       <%= f.input :tax1, :label => "Tax" do %>
         <%= f.input_field :tax1, :as => "string", :class => "input-mini" %>
