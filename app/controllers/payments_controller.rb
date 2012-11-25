@@ -6,10 +6,19 @@ class PaymentsController < ApplicationController
   end
     
   def create
+    @invoice = Invoice.find(params[:invoice_id])
+    @payments = 0
+    @invoice.payments.each do |p|
+      @payments += p.amount
+    end
     @payment = Payment.new(params[:payment])
     @payment.invoice_id = params[:invoice_id]
+    @invoice = Invoice.find(params[:invoice_id])
+    @invoice.total_payments = @payment.amount + @payments
 
       if @payment.save
+        @invoice.save
+        
         redirect_to invoices_path, notice: 'Payment was posted.' 
       else
         render :new
