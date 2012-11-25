@@ -4,6 +4,7 @@
     <th>Job Name</th>
     <th>Service Date</th>
     <th>Invoiced Date</th>
+    <th>Balance</th>
   </tr>
 
 <% invoices.each do |invoice| %>
@@ -12,6 +13,7 @@
     <td><%= invoice.job_name %></td>
     <td><%= (invoice.service_date).strftime("%m/%d/%Y") %></td>
     <td><%= (invoice.invoice_date).strftime("%m/%d/%Y") if invoice.invoice_date? %></td>
+    <td><%= number_to_currency(invoice.balance) if invoice.balance? %></td>
   </tr>
 <% end %>
 </table>
