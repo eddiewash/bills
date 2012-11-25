@@ -5,7 +5,7 @@ class EmailsController < ApplicationController
     @invoice = Invoice.find(params[:invoice_id])
     if !@invoice.invoice_date?
       @invoice.invoice_date = Date.today
-      @invoice.due_date = Date.today + (@invoice.company.payment_due).days
+      @invoice.due_date = Date.today + (@invoice.payment_terms).days
     end
     @email = Email.new
     @invoice.contacts.where("contacts.email != ?", "").each { |c| @email.email_recipients.build(contact_id: c.id) }
