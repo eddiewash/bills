@@ -3,8 +3,9 @@ class InvoicesController < ApplicationController
   # GET /invoices.json
   def index
     invoices = current_user.invoices
-    @open_invoices = invoices.find_all_by_invoice_date(nil)
-    @sent_invoices = invoices.where("invoices.invoice_date IS NOT NULL")    
+    @open_invoices = invoices.where("invoices.invoice_date IS NULL or invoices.balance != ?", 0)
+    @closed_invoices = invoices.where("invoices.balance = ? and invoices.invoice_date IS NOT NULL", 0)
+   
   end
 
   # GET /invoices/1
