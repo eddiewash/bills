@@ -1,11 +1,15 @@
 module InvoicesHelper
   
-  def balance(invoice)
-    balance = invoice.total
-    invoice.payments.each do |p|
-      balance = balance - p.amount
-    end   
-    return balance
+  def invoice_status(invoice)
+    if invoice.balance == 0 && invoice.invoice_date?
+      return "Closed"
+    elsif !invoice.invoice_date?
+      return content_tag( :div, "Draft", :class => "blue")
+    elseif invoice.due_date < Date.now
+      return content_tag( :div, "Past Due", :class => "red")
+    else
+      return content_tag( :div, "Sent", :class => "green")
+    end
   end
   
 end
