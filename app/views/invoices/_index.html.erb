@@ -2,8 +2,8 @@
   <tr>
     <th>Client</th>
     <th>Job Name</th>
-    <th>Service Date</th>
     <th>Invoiced Date</th>
+    <th>Due Date</th>
     <th>Balance</th>
     <% if status == "Open" %>
       <th>Status</th>
@@ -14,8 +14,8 @@
   <tr data-link="<%= invoice_path(invoice) %>">
     <td><%= invoice.client.client_name %></td>
     <td><%= invoice.job_name %></td>
-    <td><%= (invoice.service_date).strftime("%m/%d/%Y") %></td>
     <td><%= (invoice.invoice_date).strftime("%m/%d/%Y") if invoice.invoice_date? %></td>
+    <td><%= (invoice.due_date).strftime("%m/%d/%Y") if invoice.due_date? %></td>
     <td><%= number_to_currency(invoice.balance) if invoice.balance? %></td>
     <% if status == "Open" %>
     <td><%= invoice_status(invoice) %>
