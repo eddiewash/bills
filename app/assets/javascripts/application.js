@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require jquery.ui.datepicker
 //= require jquery.nested-fields
-//= require "bootstrap"
 //= require_tree .
 jQuery(function($) {
 	
