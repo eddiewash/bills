@@ -3,10 +3,10 @@
 </div>
 <h3>Open Invoices</h3>
 
-<%= render 'index', :invoices => @open_invoices %>
+<%= render 'index', :invoices => @open_invoices, :status => "Open" %>
 
 <h3>Closed Invoices</h3>
-<%= render 'index', :invoices => @closed_invoices %>
+<%= render 'index', :invoices => @closed_invoices, :status => "Closed" %>
 
 <br />
 
