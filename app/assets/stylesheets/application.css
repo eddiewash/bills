@@ -8,14 +8,13 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require 'bootstrap.css'
+ *= require bootstrap_and_overrides
  *= require jquery.ui.datepicker
  *= require_self
  *= require_tree .
 */
 
 body {
-	padding-top: 40px;
 	height: 100%; 
 }
 
@@ -65,6 +64,9 @@ body {
 	height: 200px;
 }
 
+#main_left h2 {
+	margin-bottom: 40px;
+}
 
 #signup {
 	width: 250px;
@@ -72,6 +74,7 @@ body {
 	font-size: 28px;
 	margin-left:120px;
 }
+
 /*******benefits *********/
 .benefit {
 	width: 31.2%;
