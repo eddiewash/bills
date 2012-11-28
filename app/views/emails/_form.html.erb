@@ -23,6 +23,7 @@
 
   <%= f.input :subject, :as => "string" %>
   <%= f.input :message, :input_html => { :class => 'span7', :rows => 10 } %>
+  <%= f.hidden_field :email_type %>
 
   <div class="form-actions">
     <%= f.button :submit, "Send Invoice", :class => 'btn-warning' %>
