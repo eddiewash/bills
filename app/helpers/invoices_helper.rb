@@ -5,7 +5,7 @@ module InvoicesHelper
       return "Closed"
     elsif !invoice.invoice_date?
       return content_tag( :div, "Draft", :class => "blue")
-    elseif invoice.due_date < Date.now
+    elsif (invoice.due_date < Date.today if invoice.due_date?)
       return content_tag( :div, "Past Due", :class => "red")
     else
       return content_tag( :div, "Sent", :class => "green")
