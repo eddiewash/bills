@@ -1,8 +1,13 @@
 module EmailsHelper
   include ActionView::Helpers::NumberHelper
   
-  def email_subject(invoice)
-    subject = "Invoice: #{invoice.job_name}"
+  def email_subject(invoice, type)
+    
+    if type = "thanks"
+      subject = "Thanks for your business"
+    elsif type = "send_invoice"
+      subject = "Invoice: #{invoice.job_name}"
+    end
     return subject    
   end
   
