@@ -29,7 +29,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/new.json
   def new
     @invoice = Invoice.new
-    if current_user.company.payment_due
+    if current_user.company.payment_due?
       @invoice.payment_terms = current_user.company.payment_due
     else
       @invoice.payment_terms = 0
