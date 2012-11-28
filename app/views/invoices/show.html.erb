@@ -9,11 +9,12 @@
   <ul class="dropdown-menu">
     <li><%= link_to "Printable Receipt (PDF)", invoice_path(@invoice, format: "pdf") %></li>
     <li><%= link_to 'Show Payments', invoice_payment_path(@invoice) %></li>
+    <li><%= link_to 'Send Thanks', new_invoice_email_path(@invoice, :type => "thanks") %></li>
     <li><%= link_to ' Delete', invoice_path(@invoice), confirm: 'Are you sure?', method: :delete %></li>
     
   </ul>
 </div>
-<%= link_to 'Send Email', new_invoice_email_path(@invoice), :class => 'btn invoice_summary' %>
+<%= link_to 'Send Email', new_invoice_email_path(@invoice, :type => "send_invoice"), :class => 'btn invoice_summary' %>
 
 <div id="balance">
   <% if @invoice.balance? %>
