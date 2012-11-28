@@ -38,7 +38,7 @@ class Invoice < ActiveRecord::Base
   has_many :emails, :dependent => :destroy
   accepts_nested_attributes_for :items, allow_destroy: true
   
-  validates :job_name, presence: true
+  validates :job_name, :payment_terms, presence: true
   validates :service_date, presence: true
   validates :tax1, :tax2, :numericality => {:greater_than_or_equal_to => 0, :less_than => 15}, :allow_blank => true
   
