@@ -12,7 +12,7 @@
   <div id="emailto">
     <%= f.simple_fields_for :email_recipients do |email_recipients_form| %>
       <%= email_recipients_form.input :_destroy, as: :boolean, :label => false do %>
-        <%= email_recipients_form.check_box :_destroy, {}, "false", "true", :input_html => { :checked => true } %>
+        <%= email_recipients_form.check_box :_destroy, {}, "false", "true" %>
         <% contact = @invoice.contacts.find(@email.email_recipients[count].contact_id) %>
         <%= contact.name + " (" + contact.email + ")" %>
       <% end %>
