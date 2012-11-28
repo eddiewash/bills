@@ -8,16 +8,18 @@
 
 <%= simple_form_for [:invoice, @email], html: {class: "form-horizontal"} do |f| %>
   <%= f.error_notification %>
-<% count = 0 %>
-  <%= f.simple_fields_for :email_recipients do |email_recipients_form| %>
-    <%= email_recipients_form.input :_destroy, as: :boolean, :label => false do %>
-      <%= email_recipients_form.check_box :_destroy, {}, "false", "true" %>
-      <% contact = @invoice.contacts.find(@email.email_recipients[count].contact_id) %>
-      <%= contact.name + " (" + contact.email + ")" %>
+  <% count = 0 %>
+  <div id="emailto">
+    <%= f.simple_fields_for :email_recipients do |email_recipients_form| %>
+      <%= email_recipients_form.input :_destroy, as: :boolean, :label => false do %>
+        <%= email_recipients_form.check_box :_destroy, {}, "false", "true", :input_html => { :checked => true } %>
+        <% contact = @invoice.contacts.find(@email.email_recipients[count].contact_id) %>
+        <%= contact.name + " (" + contact.email + ")" %>
+      <% end %>
+      <%= email_recipients_form.input :contact_id, as: :hidden %>
+      <% count += 1 %>
     <% end %>
-    <%= email_recipients_form.input :contact_id, as: :hidden %>
-    <% count += 1 %>
-  <% end %>
+  </div>
 
   <%= f.input :subject, :as => "string" %>
   <%= f.input :message, :input_html => { :class => 'span7', :rows => 10 } %>

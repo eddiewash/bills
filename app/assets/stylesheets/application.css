@@ -147,3 +147,14 @@ body {
 #edit_header {
 	margin-top: 10px;
 }
+
+/*****Email******/
+
+#emailto .control-group{
+	margin-bottom: 6px;
+}
+
+#emailto input[type="checkbox"] {
+	margin-top: -5px;
+}
+
