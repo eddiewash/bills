@@ -8,10 +8,11 @@
 #  message    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  email_type :string(255)
 #
 
 class Email < ActiveRecord::Base
-  attr_accessible :subject, :message, :invoice_id, :email_recipients_attributes
+  attr_accessible :subject, :message, :invoice_id, :email_type, :email_recipients_attributes
   
   belongs_to :invoice
   has_many :email_recipients, :dependent => :destroy
