@@ -26,7 +26,11 @@
   <%= f.hidden_field :email_type %>
 
   <div class="form-actions">
-    <%= f.button :submit, "Send Invoice", :class => 'btn-warning' %>
+    <% if @email.email_type == "thanks" %>
+      <%= f.button :submit, "Send Thanks", :class => 'btn-warning' %>
+    <% else %>
+      <%= f.button :submit, "Send Invoice", :class => 'btn-warning' %>
+    <% end %>
     <%= link_to 'Cancel', invoice_path(@invoice), :class => 'btn' %>
   </div>
 <% end %>
