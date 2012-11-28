@@ -10,7 +10,7 @@ class EmailsController < ApplicationController
     @email = Email.new
     @invoice.contacts.where("contacts.email != ?", "").each { |c| @email.email_recipients.build(contact_id: c.id) }
     @email.subject = email_subject(@invoice, params[:type])
-    @email.message = email_message(@invoice)
+    @email.message = email_message(@invoice, params[:type])
     @email.email_type = params[:type]
   end
 
