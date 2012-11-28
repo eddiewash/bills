@@ -25,13 +25,15 @@ class InvoicesController < ApplicationController
     end
   end
 
-  # GET /invoices/new
-  # GET /invoices/new.json
   def new
-    
     @invoice = Invoice.new
-    @invoice.payment_terms = 0
-    
+    if current_user.company == nil
+      @invoice.payment_terms = 0
+    else
+      @invoice.payment_terms = current_user.company.payment_due
+      @invoice.tax1 = current_user.company.tax1
+      @invoice.tax1 = current_user.company.tax1
+    end   
   end
 
   # GET /invoices/1/edit
