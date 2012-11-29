@@ -44,10 +44,12 @@
     <td><b>Notes:</b></td>
     <td><%= @invoice.notes.gsub(/\n/, '<br/>').html_safe %></td>
   </tr>
-  <tr>
-    <td><b>Service date:</b></td>
-    <td><%= (@invoice.service_date).strftime("%m/%d/%Y") %></td>
-  </tr> 
+  <% if @invoice.service_date? %>
+    <tr>
+      <td><b>Service date:</b></td>
+      <td><%= (@invoice.service_date).strftime("%m/%d/%Y") %></td>
+    </tr> 
+  <% end %>
   <% if @invoice.invoice_date? %> 
     <tr>
       <td><b>Invoice date:</b></td>
