@@ -17,7 +17,7 @@
     <td><%= (invoice.invoice_date).strftime("%m/%d/%Y") if invoice.invoice_date? %></td>
     <td><%= (invoice.due_date).strftime("%m/%d/%Y") if invoice.due_date? %></td>
     <% if status == "Open" %>
-      <td><%= number_to_currency(invoice.balance) if invoice.balance? %></td>
+      <td class=<%= balance_highlight(invoice) %>><%= number_to_currency(invoice.balance) if invoice.balance? %></td>
       <td><%= invoice_status(invoice) %>
     <% end %>
   </tr>
