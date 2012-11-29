@@ -158,3 +158,12 @@ body {
 	margin-top: -5px;
 }
 
+#emailto .boolean label {
+	display: none;
+}
+
+#emailto .boolean:nth-child(1) label {
+	margin-top: 0;
+	padding-top: 0;
+	display: inline;
+}
