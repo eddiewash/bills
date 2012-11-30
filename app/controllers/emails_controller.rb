@@ -23,7 +23,7 @@ class EmailsController < ApplicationController
       @invoice.due_date = Date.today + (@invoice.payment_terms).days
     end
 
-    if @email.save
+    if @email.valid? && @email.save
       @email.email_recipients.each do |recipient|
         r = Contact.find(recipient.contact_id)
         InvoiceMailer.send_invoice(r, @invoice, @email, current_user).deliver
@@ -31,7 +31,9 @@ class EmailsController < ApplicationController
       @invoice.save
       redirect_to invoice_path(@email.invoice_id), notice: 'Email was sent.'
     else
-      render :new
+      @invoice.contacts.where("contacts.email != ?", "").each { |c| @email.email_recipients.build(contact_id: c.id) }
+      flash[:error] = 'Please add an email recipient so we can send your email'
+      render :new  
     end
   end
 

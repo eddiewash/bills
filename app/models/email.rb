@@ -16,6 +16,8 @@ class Email < ActiveRecord::Base
   
   belongs_to :invoice
   has_many :email_recipients, :dependent => :destroy
+  
+  validates_presence_of :email_recipients
     
   accepts_nested_attributes_for :email_recipients
    
