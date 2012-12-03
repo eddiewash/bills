@@ -8,14 +8,11 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :integer
-#  email       :string(255)
-#  phone       :string(255)
-#  poc         :string(255)
 #  address     :text
 #
 
 class Client < ActiveRecord::Base
-  attr_accessible :user_id, :address, :client_name, :poc, :notes, :phone, :email
+  attr_accessible :user_id, :address, :client_name, :notes
   belongs_to :user
   has_many :invoices, :dependent => :destroy
   has_many :contacts, :dependent => :destroy

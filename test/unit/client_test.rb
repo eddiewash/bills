@@ -8,9 +8,6 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :integer
-#  email       :string(255)
-#  phone       :string(255)
-#  poc         :string(255)
 #  address     :text
 #
 
