@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
     @company = current_user.company
     if !@company
       redirect_to new_user_company_path(current_user)
-    end
+    end   
   end
   
   def edit
