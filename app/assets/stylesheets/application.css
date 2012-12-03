@@ -167,3 +167,16 @@ body {
 	padding-top: 0;
 	display: inline;
 }
+
+.hint {
+	background: #D9EDF7;
+	color: #3A87AD;
+	padding: 2px 14px;
+	border-radius: 4px;
+	margin-left: auto;
+	margin-right: auto;
+	float: right;
+	border: 1px solid;
+	border-color: #BCE8F1;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
