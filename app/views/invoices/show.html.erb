@@ -10,8 +10,7 @@
     <li><%= link_to "Printable Receipt (PDF)", invoice_path(@invoice, format: "pdf") %></li>
     <li><%= link_to 'Show Payments', invoice_payment_path(@invoice) %></li>
     <li><%= link_to 'Send Thanks', new_invoice_email_path(@invoice, :type => "thanks") %></li>
-    <li><%= link_to ' Delete', invoice_path(@invoice), confirm: 'Are you sure?', method: :delete %></li>
-    
+    <li><%= link_to 'Delete', invoice_path(@invoice), confirm: 'Are you sure?', method: :delete %></li>   
   </ul>
 </div>
 <%= link_to 'Send Email', new_invoice_email_path(@invoice, :type => "send_invoice"), :class => 'btn invoice_summary' %>
@@ -22,103 +21,117 @@
     <%= number_to_currency(@invoice.balance) %>
   <% end %>
   <%= link_to 'Post Payment', new_invoice_payment_path(@invoice), :class => 'btn' %><br/><br/>
-  </div>
+</div>
+  
+<br/><br/> 
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">Invoice Summary</a></li>
+    <li><a href="#tab2" data-toggle="tab">Billing Details</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      
+      <h4>Invoice summary: </h4>
 
-<table class="table">
+      <table class="table">
 
-<tr>
-  <td><b>Client:</b></td>
-  <td><%= @invoice.client.client_name %></td>
-</tr>
-  <tr>
-    <td><b>Job Name:</b></td>
-    <td><%= @invoice.job_name %></td>
-  </tr> 
-  <% if @invoice.po_number? %>
-    <tr>
-      <td><b>PO #:</b></td>
-      <td><%= @invoice.po_number %></td>
-    </tr>
-  <% end %>
-  <tr>
-    <td><b>Notes:</b></td>
-    <td><%= @invoice.notes.gsub(/\n/, '<br/>').html_safe %></td>
-  </tr>
-  <% if @invoice.service_date? %>
-    <tr>
-      <td><b>Service date:</b></td>
-      <td><%= (@invoice.service_date).strftime("%m/%d/%Y") %></td>
-    </tr> 
-  <% end %>
-  <% if @invoice.invoice_date? %> 
-    <tr>
-      <td><b>Invoice date:</b></td>
-      <td><%= (@invoice.invoice_date).strftime("%m/%d/%Y") %></td>
-    </tr>
-  <% end %>
-  <tr>
-    <td><b>Payment Terms:</b></td>
-    <td><%= show_payment_terms(@invoice.payment_terms) %></td>
-  </tr>
-  <% if @invoice.due_date? %> 
-    <tr>
-      <td><b>Due date:</b></td>
-      <td><%= (@invoice.due_date).strftime("%m/%d/%Y") %></td>
-    </tr>
-  <% end %>
-  <tr>
-    <td><b>Sub Total:</b></td>
-    <td><%= number_to_currency(@invoice.subtotal) %></td>
-  </tr>
-  <tr>
-    <td><b>Tax: ( <%= @invoice.tax1 %>% )</b></td>
-    <td><%= number_to_currency(@invoice.total_tax1) %></td>
-  </tr>
-  <% if @invoice.total_tax2 > 0 %>
-    <tr>
-      <td><b>Tax 2: ( <%= @invoice.tax2 %>% )</b></td>
-      <td><%= number_to_currency(@invoice.total_tax2) %></td>
-    </tr>
-  <% end %>
-  <tr>
-    <td><b>Amount Due:</b></td>
-    <td><%= number_to_currency(@invoice.total) %></td>
-  </tr>
+      <tr>
+        <td><b>Client:</b></td>
+        <td><%= @invoice.client.client_name %></td>
+      </tr>
+        <tr>
+          <td><b>Job Name:</b></td>
+          <td><%= @invoice.job_name %></td>
+        </tr> 
+        <% if @invoice.po_number? %>
+          <tr>
+            <td><b>PO #:</b></td>
+            <td><%= @invoice.po_number %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td><b>Notes:</b></td>
+          <td><%= @invoice.notes.gsub(/\n/, '<br/>').html_safe %></td>
+        </tr>
+        <% if @invoice.service_date? %>
+          <tr>
+            <td><b>Service date:</b></td>
+            <td><%= (@invoice.service_date).strftime("%m/%d/%Y") %></td>
+          </tr> 
+        <% end %>
+        <% if @invoice.invoice_date? %> 
+          <tr>
+            <td><b>Invoice date:</b></td>
+            <td><%= (@invoice.invoice_date).strftime("%m/%d/%Y") %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td><b>Payment Terms:</b></td>
+          <td><%= show_payment_terms(@invoice.payment_terms) %></td>
+        </tr>
+        <% if @invoice.due_date? %> 
+          <tr>
+            <td><b>Due date:</b></td>
+            <td><%= (@invoice.due_date).strftime("%m/%d/%Y") %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td><b>Sub Total:</b></td>
+          <td><%= number_to_currency(@invoice.subtotal) %></td>
+        </tr>
+        <tr>
+          <td><b>Tax: ( <%= @invoice.tax1 %>% )</b></td>
+          <td><%= number_to_currency(@invoice.total_tax1) %></td>
+        </tr>
+        <% if @invoice.total_tax2 > 0 %>
+          <tr>
+            <td><b>Tax 2: ( <%= @invoice.tax2 %>% )</b></td>
+            <td><%= number_to_currency(@invoice.total_tax2) %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td><b>Amount Due:</b></td>
+          <td><%= number_to_currency(@invoice.total) %></td>
+        </tr>
     
   
-</table>
+      </table>
+    </div> 
+    <div class="tab-pane" id="tab2">
+      
+      <h4>Billing Details: </h4>
 
-<h4>Billing Details: </h4>
+      <table class="table">
 
-<table class="table">
+        <tr>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Unit Cost</th>
+          <th>Total Cost</th>
+        </tr>
 
-  <tr>
-    <th>Description</th>
-    <th>Quantity</th>
-    <th>Unit Cost</th>
-    <th>Total Cost</th>
-  </tr>
-
-  <% @invoice.items.sort { |a,b| a.name <=> b.name }.each do |i| %>
-    <tr>
-      <td><%= i.name %></td>
-      <td><%= i.quantity %></td>
-      <td><%= number_to_currency(i.cost_per) %> </td>
-      <td><%= number_to_currency(i.total_cost) %>
-      <% if i.tax1? %>
-        &#185;
-      <% end %>
-      <% if i.tax2? %>
-        &#178;
-      <% end %>
-      </td>
-    </tr> 
-  <% end %>
+        <% @invoice.items.sort { |a,b| a.name <=> b.name }.each do |i| %>
+          <tr>
+            <td><%= i.name %></td>
+            <td><%= i.quantity %></td>
+            <td><%= number_to_currency(i.cost_per) %> </td>
+            <td><%= number_to_currency(i.total_cost) %>
+            <% if i.tax1? %>
+              &#185;
+            <% end %>
+            <% if i.tax2? %>
+              &#178;
+            <% end %>
+            </td>
+          </tr> 
+        <% end %>
    
-  
-</table>
+      </table>
 
-
+    </div>
+  </div>
+</div>
 
 
 
