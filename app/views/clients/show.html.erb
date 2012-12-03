@@ -8,7 +8,8 @@
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
       <h4>Client Info: </h4>
-         
+      <div class="row">
+        <div class="span8">   
       <table class="table">
         <tr>
           <td><b>Address:</b></td>
@@ -46,33 +47,48 @@
         </tr>
    
       </table>
+      </div>
+      <div class="span3 offset1 hint">
+      <h4>Tip: </h4>
+        <p> Adding contacts is important to using InvoiceMe's email functionality. </p>
+        <p> Check out the tab above to review your contacts and make changes.</p>
+      </div>
+      </div>
       <%= link_to 'Edit', edit_client_path(@client), :class => 'btn' %>
       <%= link_to 'Back', clients_path, :class => 'btn' %>
 
     </div>
     <div class="tab-pane" id="tab2">
-      <h4>Client Contacts: </h4>
-      <table class="table table-hover">
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Cell</th>
-        </tr>
+    <div class="row">
+      <div class="span8">
+        <h4>Client Contacts: </h4>
+        <table class="table table-hover">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Cell</th>
+          </tr>
 
-      <% @contacts.each do |contact| %>
-        <tr data-link="<%= client_contact_path(@client, contact) %>">
-          <td><%= contact.name %></td>
-          <td><%= contact.email %></td>
-          <td><%= number_to_phone(contact.phone_cell) %></td>
-        </tr>
-      <% end %>
+          <% @contacts.each do |contact| %>
+            <tr data-link="<%= client_contact_path(@client, contact) %>">
+              <td><%= contact.name %></td>
+              <td><%= contact.email %></td>
+              <td><%= number_to_phone(contact.phone_cell) %></td>
+            </tr>
+          <% end %>
 
-      </table>
-      
-      <%= link_to 'Add a New Contact', new_client_contact_path(@client), :class => 'btn' %>
-      <%= link_to 'Back', clients_path, :class => 'btn' %>
-           
+        </table>
+      </div>
+      <div class="span3 offset1 hint">
+        <h4>Tip: </h4>
+        <p> We don't force you, but adding an email to your contacts allows you to email your invoices, no more snail mail. </p>
+        <p> Save the money on stamps and get your invoices to your clients sooner = you get paid sooner too.</p>
+      </div>
     </div>
+      
+    <%= link_to 'Add a New Contact', new_client_contact_path(@client), :class => 'btn' %>
+    <%= link_to 'Back', clients_path, :class => 'btn' %>
+           
   </div>
 </div>
 
