@@ -13,7 +13,7 @@ class InvoicePdf < Prawn::Document
   end
   
   def invoice_number
-    if @invoice.company.logo?
+    if @invoice.company != nil && @invoice.company.logo?
       image @invoice.company.logo, :height => 40
     end
   end
@@ -26,7 +26,7 @@ class InvoicePdf < Prawn::Document
     end
     
     text "Invoice Date: #{(@invoice.invoice_date).strftime("%m/%d/%Y") if @invoice.invoice_date}"
-    if @invoice.company.payment_due
+    if @invoice.due_date
       text "Payment Due:  #{(@invoice.due_date).strftime("%m/%d/%Y") if @invoice.due_date}"
     end   
     
@@ -98,14 +98,10 @@ class InvoicePdf < Prawn::Document
   def payable_info
     move_down 20
     text "Make check payable to:"
-    text "#{@invoice.company.name}"
-    text "#{@invoice.company.address}"
-    
-    
-    
-    
-    
-    
-    
+    if @invoice.company != nil
+      text "#{@invoice.company.name}"
+      text "#{@invoice.company.address}"
+    end    
   end
+  
 end
