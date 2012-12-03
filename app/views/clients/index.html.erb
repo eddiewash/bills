@@ -5,8 +5,6 @@
 <table class="table table-hover">
   <tr>
     <th>Client name</th>
-    <th>Email</th>
-    <th>Phone</th>
     <th>Address</th>
 
   </tr>
@@ -14,8 +12,6 @@
 <% @clients.each do |client| %>
   <tr data-link="<%= client_path(client) %>">
     <td><%= client.client_name %></td>
-    <td><%= client.email %></td>
-    <td><%= number_to_phone(client.phone) %></td>
     <td><%= client.address.gsub(/\n/, '<br/>').html_safe %></td>
   </tr>
 <% end %>

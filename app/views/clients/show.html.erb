@@ -19,27 +19,6 @@
         </tr> 
   
         <tr>
-          <td><b>Contact:</b></td>
-          <td>
-            <%= @client.poc %>
-          </td>
-        </tr>
-  
-        <tr>
-          <td><b>Email:</b></td>
-          <td>
-            <%= @client.email %>
-          </td>
-        </tr>
-  
-        <tr>
-          <td><b>Phone:</b></td>
-          <td>
-            <%= number_to_phone(@client.phone) %>
-          </td>
-        </tr>
-  
-        <tr>
           <td><b>Notes:</b></td>
           <td>
             <%= @client.notes.gsub(/\n/, '<br/>').html_safe %>
