@@ -16,6 +16,7 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     @client = Client.find(params[:id])
+    @contacts = @client.contacts.all
     
     unless current_user.id == @client.user_id
       flash[:notice] = "You don't have access to that client"
@@ -23,10 +24,7 @@ class ClientsController < ApplicationController
       return
     end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @client }
-    end
+
   end
 
   # GET /clients/new
