@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128170915) do
+ActiveRecord::Schema.define(:version => 20121203201248) do
 
   create_table "billings", :force => true do |t|
     t.integer  "invoice_id"
@@ -25,9 +25,6 @@ ActiveRecord::Schema.define(:version => 20121128170915) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "user_id"
-    t.string   "email"
-    t.string   "phone"
-    t.string   "poc"
     t.text     "address"
   end
 
