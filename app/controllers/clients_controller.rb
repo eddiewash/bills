@@ -17,6 +17,7 @@ class ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id])
     @contacts = @client.contacts.all
+    @json = @client.to_gmaps4rails
     
     unless current_user.id == @client.user_id
       flash[:notice] = "You don't have access to that client"

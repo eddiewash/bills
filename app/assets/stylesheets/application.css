@@ -8,6 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require gmaps4rails.css
  *= require bootstrap_and_overrides
  *= require jquery.ui.datepicker
  *= require_self
@@ -180,3 +181,10 @@ body {
 	border-color: #BCE8F1;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
+
+#map_canvas {
+  width: 500px;
+  height: 500px;
+}
+
+

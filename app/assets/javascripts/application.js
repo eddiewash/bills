@@ -128,4 +128,14 @@ function hideTax2Table () {
 	$("input.tax2").prop("checked", false);
 }
 
+//Google Map
+
+$("#mapTab").click(function(){
+	Gmaps.loadMaps();
+	$(".map_container").show();
+	google.maps.event.trigger(map, 'resize');
+});
+
+
+
 })
