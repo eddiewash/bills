@@ -12,6 +12,7 @@ gem 'fog'
 gem 'geocoder'
 gem 'pg'
 gem 'prawn'
+gem 'ransack'
 gem 'simple_form'
 gem 'thin'
 
