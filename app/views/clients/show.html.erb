@@ -16,6 +16,7 @@
           <td><b>Address:</b></td>
           <td>
             <%= @client.address.gsub(/\n/, '<br/>').html_safe %>
+            <%= link_to "map", "https://maps.google.com/maps?q=#{(@client.address).gsub(" ", "+").gsub("\n", "+")}" , :target => "_blank" %>
           </td>
         </tr> 
         
