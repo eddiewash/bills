@@ -1,0 +1,17 @@
+<%= simple_form_for(@invoice)  do |f| %>
+  <%= f.error_notification %>
+  
+  <div class="form-inputs">
+    <div id="mail_date">
+      <%= f.input :invoice_date, :label=> "Invoice Mailed Date", :as => "string" %>
+      <% f.input :title, :as => :hidden, :input_html => { :value => "some value" } %>
+    </div>
+  </div>
+      
+  <div class="modal-footer">
+    <%= f.button :submit, 'Mail Invoice', :class => 'btn-warning'  %>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+  </div>
+
+<% end %>
+
