@@ -24,6 +24,16 @@ class InvoicesController < ApplicationController
       end
     end
   end
+  
+  def mail
+    @invoice = Invoice.find(params[:id])
+    if current_user.company == nil || @invoice.payment_terms == nil
+      @invoice.payment_terms = 0
+    end
+    @invoice.invoice_date = Date.today
+    @invoice.due_date = @invoice.invoice_date + (@invoice.payment_terms).days
+    gon.invoice = Invoice.find(params[:id])
+  end
 
   def new
     @invoice = Invoice.new
@@ -61,15 +71,13 @@ class InvoicesController < ApplicationController
   # PUT /invoices/1.json
   def update
     @invoice = Invoice.find(params[:id])
-
-    respond_to do |format|
-      if @invoice.update_attributes(params[:invoice])
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @invoice.errors, status: :unprocessable_entity }
-      end
+    if params[:commit]== "Mail Invoice" && params[:invoice][:invoice_date]==""
+      params[:invoice][:invoice_date] = Date.today
+    end
+    if @invoice.update_attributes(params[:invoice])
+      redirect_to @invoice, notice: 'Invoice was successfully updated.'
+    else
+      render :edit 
     end
   end
 

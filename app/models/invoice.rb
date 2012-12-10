@@ -26,7 +26,7 @@
 class Invoice < ActiveRecord::Base
   attr_accessible :items_attributes, :job_name, :po_number, :total_payments, :notes, :service_date, :due_date, :invoice_date, :client_id,  :tax1, :tax2, :payment_terms
   
-  before_save :calculate_totals
+  before_save :calculate_totals, :update_due_date
   
   belongs_to :client
   has_one :user, :through => :client
@@ -42,6 +42,12 @@ class Invoice < ActiveRecord::Base
   validates :tax1, :tax2, :numericality => {:greater_than_or_equal_to => 0, :less_than => 15}, :allow_blank => true
   
   private
+  
+  def update_due_date
+    if self.invoice_date? and !self.due_date
+      self.due_date = self.invoice_date + (self.payment_terms).days
+    end
+  end
   
   def calculate_totals
     self.subtotal = 0
