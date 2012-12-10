@@ -7,6 +7,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
+    <% if !@invoice.invoice_date %>
+      <li><%= link_to 'Mail Invoice', "#myModal", :data => {:toggle=>"modal"} %></li>
+    <%end%>
     <li><%= link_to "Printable Receipt (PDF)", invoice_path(@invoice, format: "pdf") %></li>
     <li><%= link_to 'Show Payments', invoice_payment_path(@invoice) %></li>
     <li><%= link_to 'Send Thanks', new_invoice_email_path(@invoice, :type => "thanks") %></li>
@@ -130,6 +133,17 @@
       </table>
 
     </div>
+  </div>
+</div>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Enter the date the invoice was mailed</h3>
+    <h5>The date will default to today if no date is entered</h5>
+  </div>
+  <div class="modal-body">
+  <%= render 'mailform' %>
   </div>
 </div>
 
