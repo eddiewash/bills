@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204165804) do
+ActiveRecord::Schema.define(:version => 20121203201248) do
 
   create_table "billings", :force => true do |t|
     t.integer  "invoice_id"
@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(:version => 20121204165804) do
     t.datetime "updated_at",  :null => false
     t.integer  "user_id"
     t.text     "address"
-    t.float    "latitude"
-    t.float    "longitude"
   end
 
   add_index "clients", ["user_id"], :name => "index_clients_on_user_id"

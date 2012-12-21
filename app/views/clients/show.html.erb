@@ -2,9 +2,8 @@
 
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs">
-    <li class="active"><a class="noMap" href="#tab1" data-toggle="tab">Client Info</a></li>
-    <li><a class="noMap" href="#tab2" data-toggle="tab">Client Contacts</a></li>
-    <li><a id="mapTab" href="#tab3" data-toggle="tab">Client Map</a></li>
+    <li class="active"><a href="#tab1" data-toggle="tab">Client Info</a></li>
+    <li><a href="#tab2" data-toggle="tab">Client Contacts</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
@@ -20,20 +19,6 @@
           </td>
         </tr> 
         
-        <tr>
-          <td><b>Longitude:</b></td>
-          <td>
-            <%= @client.longitude %>
-          </td>
-        </tr>
-        
-        <tr>
-          <td><b>Latitude:</b></td>
-          <td>
-            <%= @client.latitude %>
-          </td>
-        </tr>
-  
         <tr>
           <td><b>Notes:</b></td>
           <td>
@@ -84,11 +69,6 @@
     <%= link_to 'Add a New Contact', new_client_contact_path(@client), :class => 'btn' %>
     <%= link_to 'Back', clients_path, :class => 'btn' %>
            
-  </div>
-  <div class="tab-pane" id="tab3">
-    <h4>Client Map: </h4>
-    <%= render :partial => 'map', :locals => {:lat => @client.latitude, :long => @client.longitude, :zoom => 8} %>
-    <%= render :partial => 'pin', :locals => {:lat => @client.latitude, :long => @client.longitude, :title => @client.client_name} %>
   </div>
 </div>
 <br/>
