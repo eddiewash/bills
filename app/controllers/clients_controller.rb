@@ -18,6 +18,9 @@ class ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id])
     @contacts = @client.contacts.all
+    invoices = @client.invoices
+    @open_invoices = invoices.where("invoices.invoice_date IS NULL or invoices.balance != ?", 0)
+    @closed_invoices = invoices.where("invoices.balance = ? and invoices.invoice_date IS NOT NULL", 0)
     
     unless current_user.id == @client.user_id
       flash[:notice] = "You don't have access to that client"
