@@ -5,16 +5,18 @@
     <th>Job Name</th>
     <% if status == "Scheduled" %>
       <th>Appointment Date</th>
+      <th>Appointment Time</th>
     <% end %>
     <th>Notes</th>
   </tr>
 
 <% invoices.each do |invoice| %>
-  <tr data-link="<%= invoice_path(invoice) %>">
+  <tr data-link="<%= appointment_path(invoice) %>">
     <td><%= invoice.client.client_name %></td>
     <td><%= invoice.job_name %></td>
     <% if status == "Scheduled" %>
       <td><%= (invoice.appointment_date).strftime("%m/%d/%Y") if invoice.appointment_date? %></td>
+      <td><%= (invoice.appointment_date).strftime("%I:%M %p") if invoice.appointment_date? %></td>
     <% end %>
     <td><%= invoice.notes %></td>
   </tr>
