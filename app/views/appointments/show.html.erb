@@ -1,0 +1,50 @@
+<h3>Appointment Info</h3>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice), :class => 'btn invoice_summary' %>
+  
+<br/><br/> 
+<table class="table">
+
+  <tr>
+    <td><b>Client:</b></td>
+    <td><%= @invoice.client.client_name %></td>
+  </tr>
+  <tr>
+    <td><b>Address:</b></td>
+    <td>
+      <%= @invoice.client.address.gsub(/\n/, '<br/>').html_safe %>
+      <%= link_to "map", "https://maps.google.com/maps?q=#{(@invoice.client.address).gsub(" ", "+").gsub("\n", "+")}" , :target => "_blank" %>
+    </td>
+  </tr>
+  <tr>
+    <td><b>Job Name:</b></td>
+    <td><%= @invoice.job_name %></td>
+  </tr> 
+  <% if @invoice.appointment_date? %>
+    <tr>
+      <td><b>Appointment date:</b></td>
+      <td><%= (@invoice.appointment_date).strftime("%m/%d/%Y") %></td>
+    </tr> 
+    <tr>
+      <td><b>Appointment time:</b></td>
+      <td><%= (@invoice.appointment_date).strftime("%I:%M %p") %></td>
+    </tr>
+  <% end %>
+  
+  <tr>
+    <td><b>Notes:</b></td>
+    <td><%= @invoice.notes.gsub(/\n/, '<br/>').html_safe %></td>
+  </tr>
+  
+
+
+</table>
+
+
+
+
+
+
+
+
+

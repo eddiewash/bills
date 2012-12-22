@@ -27,5 +27,9 @@ class AppointmentsController < ApplicationController
       render :new
     end
   end
+  
+  def show
+    @invoice = Invoice.find(params[:id])
+  end
     
 end
