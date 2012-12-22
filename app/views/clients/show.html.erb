@@ -28,6 +28,11 @@
         </tr>
    
       </table>
+      <br/><br/>
+      <%= link_to 'Edit', edit_client_path(@client), :class => 'btn' %>
+      <%= link_to 'Back', clients_path, :class => 'btn' %>
+      <%= link_to 'Set Appointment', new_appointment_path(:id => @client), :class => 'btn btn-warning float_right' %>
+      
       </div>
       <div class="span3 offset1 hint">
       <h4>Tip: </h4>
@@ -35,8 +40,8 @@
         <p> Check out the tab above to review your contacts and make changes.</p>
       </div>
       </div>
-      <%= link_to 'Edit', edit_client_path(@client), :class => 'btn' %>
-      <%= link_to 'Back', clients_path, :class => 'btn' %>
+
+      
 
     </div>
     <div class="tab-pane" id="tab2">
