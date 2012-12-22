@@ -5,6 +5,8 @@ Bills::Application.routes.draw do
     resources :emails
   end
   
+  resources :appointments
+  
   resources :companies
   
   resources :email_recipients

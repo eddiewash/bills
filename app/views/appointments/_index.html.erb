@@ -1,0 +1,22 @@
+
+<table class="table table-hover">
+  <tr>
+    <th>Client</th>
+    <th>Job Name</th>
+    <% if status == "Scheduled" %>
+      <th>Appointment Date</th>
+    <% end %>
+    <th>Notes</th>
+  </tr>
+
+<% invoices.each do |invoice| %>
+  <tr data-link="<%= invoice_path(invoice) %>">
+    <td><%= invoice.client.client_name %></td>
+    <td><%= invoice.job_name %></td>
+    <% if status == "Scheduled" %>
+      <td><%= (invoice.appointment_date).strftime("%m/%d/%Y") if invoice.appointment_date? %></td>
+    <% end %>
+    <td><%= invoice.notes %></td>
+  </tr>
+<% end %>
+</table>

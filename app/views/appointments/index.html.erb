@@ -1,0 +1,13 @@
+<div>
+	<h1>Appointment</h1>
+</div>
+<h3>Scheduled Appointments</h3>
+
+<%= render 'index', :invoices => @scheduled_appointments, :status => "Scheduled" %>
+
+<h3>Pending Appointments</h3>
+<%= render 'index', :invoices => @pending_appointments, :status => "Pending" %>
+
+<br />
+
+<%= link_to 'New Appointment', new_appointment_path, :class => 'btn' %>
