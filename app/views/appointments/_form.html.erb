@@ -2,7 +2,10 @@
   <%= f.error_notification %>
   
   <div class="form-inputs">
-    <%= f.input :client_id, collection: current_user.clients.all, label_method: :client_name %>
+    <%= f.input :client_id do %>
+      <%= f.input_field :client_id, collection: current_user.clients.all, label_method: :client_name %>
+      <%= link_to "Add New Client", new_client_path %>
+    <% end %> 
     <%= f.input :job_name %>
     <%= f.input :appointment_date, :as => "string" %> 
     <%= f.input :notes, :input_html => { :class => 'span6', :rows => 5 } %>
