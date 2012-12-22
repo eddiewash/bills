@@ -19,7 +19,7 @@
 jQuery(function($) {
 
 // Datepicker
-$('#invoice_service_date, #payment_payment_date, #invoice_invoice_date, #invoice_due_date').datepicker({ dateFormat: "yy-mm-dd" });
+$('#invoice_service_date, #payment_payment_date, #invoice_invoice_date, #invoice_due_date, #invoice_appointment_date').datepicker({ dateFormat: "yy-mm-dd" });
 
 // Awesome_nested_fields Add Item  and Remove Item Links
 $('FORM').nestedFields({
