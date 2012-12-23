@@ -1,4 +1,4 @@
-<%= simple_form_for(@invoice, :url => { :controller => "appointments"} ) do |f| %>
+<%= simple_form_for(@invoice, :url => { :controller => "appointments", :action => method} ) do |f| %>
   <%= f.error_notification %>
   
   <div class="form-inputs">
@@ -20,7 +20,11 @@
   </div>
 
   <div class="form-actions">
+  <% if method == "create" %>
     <%= f.button :submit, "Set Appointment", :class => 'btn-warning'  %>
+  <% else %>
+    <%= f.button :submit, "Update Appointment", :class => 'btn-warning'  %>
+  <% end %>
     <%= link_to 'Cancel', @invoice, :class => 'btn' %>
   </div>
 
