@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
     @invoice = Invoice.new(params[:invoice])
 
     if @invoice.save
-      redirect_to @invoice, notice: 'Appointment was successfully set.' 
+      redirect_to appointment_path(@invoice), notice: 'Appointment was successfully set.' 
     else
       render :new
     end
@@ -31,5 +31,20 @@ class AppointmentsController < ApplicationController
   def show
     @invoice = Invoice.find(params[:id])
   end
+  
+  def edit
+    @invoice = Invoice.find(params[:id])
+  end
+  
+  def update
+    @invoice = Invoice.find(params[:id])
+
+    if @invoice.update_attributes(params[:invoice])
+      redirect_to appointment_path(@invoice), notice: 'Appointment was successfully updated.'
+    else
+      render :edit 
+    end
+  end
+  
     
 end
