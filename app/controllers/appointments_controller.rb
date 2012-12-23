@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   
   def index
     appointments = current_user.invoices
-    @scheduled_appointments = appointments.where("(invoices.invoice_date IS NULL or invoices.balance != ?) and invoices.appointment_date IS NOT NULL", 0)
+    @scheduled_appointments = appointments.where("(invoices.invoice_date IS NULL or invoices.balance != ?) and invoices.appointment_date IS NOT NULL", 0).order("appointment_date ASC")
     @pending_appointments = appointments.where("invoices.invoice_date IS NULL and invoices.appointment_date IS NULL ", 0)
   end
   
