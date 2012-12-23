@@ -1,15 +1,11 @@
 class InvoicesController < ApplicationController
-  # GET /invoices
-  # GET /invoices.json
+
   def index
     invoices = current_user.invoices
     @open_invoices = invoices.where("invoices.invoice_date IS NULL or invoices.balance != ?", 0)
-    @closed_invoices = invoices.where("invoices.balance = ? and invoices.invoice_date IS NOT NULL", 0)
-   
+    @closed_invoices = invoices.where("invoices.balance = ? and invoices.invoice_date IS NOT NULL", 0) 
   end
 
-  # GET /invoices/1
-  # GET /invoices/1.json
   def show
     @billing = Billing.new
     @invoice = Invoice.find(params[:id])
@@ -46,29 +42,20 @@ class InvoicesController < ApplicationController
     end   
   end
 
-  # GET /invoices/1/edit
   def edit
     @invoice = Invoice.find(params[:id])
   end
 
-  # POST /invoices
-  # POST /invoices.json
   def create
     @invoice = Invoice.new(params[:invoice])
 
-    respond_to do |format|
-      if @invoice.save
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
-        format.json { render json: @invoice, status: :created, location: @invoice }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @invoice.errors, status: :unprocessable_entity }
-      end
+    if @invoice.save
+      redirect_to @invoice, notice: 'Invoice was successfully created.'
+    else
+      render :new
     end
   end
 
-  # PUT /invoices/1
-  # PUT /invoices/1.json
   def update
     @invoice = Invoice.find(params[:id])
     if params[:commit]== "Mail Invoice" && params[:invoice][:invoice_date]==""
@@ -81,8 +68,6 @@ class InvoicesController < ApplicationController
     end
   end
 
-  # DELETE /invoices/1
-  # DELETE /invoices/1.json
   def destroy
     @invoice = Invoice.find(params[:id])
     @invoice.destroy
@@ -93,5 +78,4 @@ class InvoicesController < ApplicationController
     end
   end
   
-
 end
