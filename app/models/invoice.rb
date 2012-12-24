@@ -25,9 +25,11 @@
 #
 
 class Invoice < ActiveRecord::Base
-  attr_accessible :items_attributes, :job_name, :po_number, :total_payments, :notes, :appointment_date, :service_date, :due_date, :invoice_date, :client_id,  :tax1, :tax2, :payment_terms
+  attr_accessible :items_attributes, :job_name, :po_number, :total_payments, :notes, :appointment_date, :service_date, :due_date, :invoice_date, :client_id,  :tax1, :tax2, :payment_terms, :date_text, :time_text
   
-  before_save :calculate_totals, :update_due_date
+  attr_writer :date_text, :time_text
+  
+  before_save :calculate_totals, :update_due_date, :update_appointment_date
   
   belongs_to :client
   has_one :user, :through => :client
@@ -42,7 +44,20 @@ class Invoice < ActiveRecord::Base
   validates :client_id, :job_name, :payment_terms, presence: true
   validates :tax1, :tax2, :numericality => {:greater_than_or_equal_to => 0, :less_than => 15}, :allow_blank => true
   
+  def date_text
+    appointment_date.try(:strftime, "%Y-%m-%d")
+  end
+  
+  def time_text
+    appointment_date.try(:strftime, "%I:%M %p")
+  end
+  
   private
+  
+  def update_appointment_date
+    self.appointment_date = Chronic.parse("#{@date_text} #{@time_text}")
+  end
+  
   
   def update_due_date
     if self.invoice_date? and !self.due_date
