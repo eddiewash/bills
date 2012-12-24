@@ -7,6 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'awesome_nested_fields'
 gem 'carrierwave'
+gem 'chronic'
 gem 'devise'
 gem 'fog'
 gem 'geocoder'
