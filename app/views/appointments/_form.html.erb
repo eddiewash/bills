@@ -1,6 +1,5 @@
 <%= simple_form_for(@invoice, :url => { :controller => "appointments", :action => method} ) do |f| %>
   <%= f.error_notification %>
-  
   <div class="form-inputs">
     <%= f.input :client_id do %>
       <%= f.input_field :client_id, collection: current_user.clients.all, label_method: :client_name %>
@@ -8,12 +7,9 @@
     <% end %> 
     <%= f.input :job_name %>
     
-    <%= f.input :date_text do %>
-      <%=f.input_field :date_text, :as => "string", :class => 'appointment_date' %>
-    <% end %>
+    <%= f.input :date_text, :as => "string", :label => "Appointment Date", :input_html => {:class => 'appointment_date'} %>
 
-
-    <%= f.input :time_text, :label => "Time" do %>
+    <%= f.input :time_text, :label => "Appointment Time" do %>
         <div class="input-append bootstrap-timepicker-component">
           <%= f.input_field :time_text, :as => "string", :ignore_date => true, :class => 'timepicker-default input-small' %>
           <span class="add-on"><i class="icon-time"></i></span>

@@ -790,7 +790,7 @@
       minuteStep: 15
     , secondStep: 15
     , disableFocus: false
-    , defaultTime: 'current'
+    , defaultTime: 'value'
     , showSeconds: false
     , showInputs: true
     , showMeridian: true
