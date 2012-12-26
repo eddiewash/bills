@@ -22,6 +22,7 @@
 #  total_payments   :decimal(, )
 #  payment_terms    :integer
 #  appointment_date :datetime
+#  appointment_time :time
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

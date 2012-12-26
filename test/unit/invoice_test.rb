@@ -22,6 +22,7 @@
 #  total_payments   :decimal(, )
 #  payment_terms    :integer
 #  appointment_date :datetime
+#  appointment_time :time
 #
 
 require 'test_helper'

@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20121221234129) do
     t.decimal  "total_payments"
     t.integer  "payment_terms"
     t.datetime "appointment_date"
+    t.time     "appointment_time"
   end
 
   create_table "items", :force => true do |t|

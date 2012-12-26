@@ -22,10 +22,11 @@
 #  total_payments   :decimal(, )
 #  payment_terms    :integer
 #  appointment_date :datetime
+#  appointment_time :time
 #
 
 class Invoice < ActiveRecord::Base
-  attr_accessible :items_attributes, :job_name, :po_number, :total_payments, :notes, :appointment_date, :service_date, :due_date, :invoice_date, :client_id,  :tax1, :tax2, :payment_terms, :date_text, :time_text
+  attr_accessible :items_attributes, :job_name, :po_number, :total_payments, :notes, :appointment_date, :appointment_time, :service_date, :due_date, :invoice_date, :client_id,  :tax1, :tax2, :payment_terms, :date_text, :time_text
   
   attr_writer :date_text, :time_text
   
@@ -49,13 +50,15 @@ class Invoice < ActiveRecord::Base
   end
   
   def time_text
-    appointment_date.try(:strftime, "%I:%M %p")
+    
+    appointment_time.in_time_zone("Eastern Time (US & Canada)").try(:strftime, "%I:%M %p") if appointment_time
   end
   
   private
   
   def update_appointment_date
-    self.appointment_date = Chronic.parse("#{@date_text} #{@time_text}")
+    self.appointment_date = Chronic.parse("#{@date_text}")
+    self.appointment_time = Chronic.parse("#{@time_text}")
   end
   
   
