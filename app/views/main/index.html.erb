@@ -1,7 +1,28 @@
 <h2> Your InvoiceMe Dash Board </h2>
 
-<%= link_to 'Set Appointment', new_appointment_path, :class => 'btn btn-warning' %>
-
-<h3> Pending Invoices </h3>
-
 <h3> Clients </h3>
+
+
+<div class="search">
+  <%= search_form_for @search, :builder => SimpleForm::FormBuilder do |f| %>
+    <div class="field">
+    <%= f.text_field :client_name_cont, placeholder: 'Search by Name' %>
+    <%= f.button :submit, "Search", :class => 'search_button' %>
+    </div>
+
+  <% end %>
+
+
+
+<div>
+<h3 class="inline">Scheduled Appointments</h3>
+<%= link_to 'Set Appointment', new_appointment_path, :class => 'btn btn-warning float_right' %>
+</div>
+
+<%= render 'appointments/index', :invoices => @scheduled_appointments, :status => "Scheduled" %>
+
+<h3 class="inline"> Open Invoices </h3>
+<%= link_to 'New Invoice', new_invoice_path, :class => 'btn btn-warning float_right' %>
+
+<%= render 'invoices/index', :invoices => @open_invoices, :status => "Open" %>
+

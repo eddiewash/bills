@@ -6,15 +6,8 @@ class ClientsController < ApplicationController
   def index
     @search = current_user.clients.search(params[:q])
     @clients = @search.result
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @clients }
-    end
   end
 
-  # GET /clients/1
-  # GET /clients/1.json
   def show
     @client = Client.find(params[:id])
     @contacts = @client.contacts.all

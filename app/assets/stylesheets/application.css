@@ -149,6 +149,10 @@ body {
 	margin-top: 10px;
 }
 
+.inline {
+	display: inline;
+}
+
 /*****Email******/
 
 #emailto .control-group{
