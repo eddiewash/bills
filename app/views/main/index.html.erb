@@ -1,4 +1,4 @@
-<h2> Your InvoiceMe Dash Board </h2>
+<h2>Dash Board </h2>
 
 <h3> Clients </h3>
 
@@ -14,8 +14,13 @@
 
 
 
-<div>
+<div class="hidden-phone">
 <h3 class="inline">Scheduled Appointments</h3>
+<%= link_to 'Set Appointment', new_appointment_path, :class => 'btn btn-warning float_right' %>
+</div>
+
+<div class="visible-phone">
+<h3 class="inline">Sch Appts</h3>
 <%= link_to 'Set Appointment', new_appointment_path, :class => 'btn btn-warning float_right' %>
 </div>
 

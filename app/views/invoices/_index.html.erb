@@ -2,10 +2,10 @@
   <tr>
     <th>Client</th>
     <th>Job Name</th>
-    <th>Invoiced Date</th>
-    <th>Due Date</th>
+    <th class="hidden-phone">Invoiced Date</th>
+    <th class="hidden-phone">Due Date</th>
     <% if status == "Open" %>
-      <th>Balance</th>
+      <th class="hidden-phone">Balance</th>
       <th>Status</th>
     <% end %>
   </tr>
@@ -14,10 +14,10 @@
   <tr data-link="<%= invoice_path(invoice) %>">
     <td><%= invoice.client.client_name %></td>
     <td><%= invoice.job_name %></td>
-    <td><%= (invoice.invoice_date).strftime("%m/%d/%Y") if invoice.invoice_date? %></td>
-    <td><%= (invoice.due_date).strftime("%m/%d/%Y") if invoice.due_date? %></td>
+    <td class="hidden-phone"><%= (invoice.invoice_date).strftime("%m/%d/%Y") if invoice.invoice_date? %></td>
+    <td class="hidden-phone"><%= (invoice.due_date).strftime("%m/%d/%Y") if invoice.due_date? %></td>
     <% if status == "Open" %>
-      <td class=<%= balance_highlight(invoice) %>><%= number_to_currency(invoice.balance) if invoice.balance? %></td>
+      <td class="hidden-phone <%= balance_highlight(invoice) %>"><%= number_to_currency(invoice.balance) if invoice.balance? %></td>
       <td><%= invoice_status(invoice) %>
     <% end %>
   </tr>

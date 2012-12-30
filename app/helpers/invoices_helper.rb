@@ -15,6 +15,9 @@ module InvoicesHelper
   def balance_highlight(invoice)
     if (invoice.due_date < Date.today if invoice.due_date?) 
       return "red_highlight"
+      
+    else
+      return "hidden-phone"
     end
   end
   

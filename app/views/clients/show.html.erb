@@ -34,7 +34,7 @@
       <%= link_to 'Set Appointment', new_appointment_path(:id => @client), :class => 'btn btn-warning float_right' %>
       
       </div>
-      <div class="span3 offset1 hint">
+      <div class="span3 offset1 hint hidden-phone">
       <h4>Tip: </h4>
         <p> Adding contacts is important to using InvoiceMe's email functionality. </p>
         <p> Check out the tab above to review your contacts and make changes.</p>
@@ -65,7 +65,7 @@
 
         </table>
       </div>
-      <div class="span3 offset1 hint">
+      <div class="span3 offset1 hint hidden-phone">
         <h4>Tip: </h4>
         <p> We don't force you, but adding an email to your contacts allows you to email your invoices, no more snail mail. </p>
         <p> Save the money on stamps and get your invoices to your clients sooner = you get paid sooner too.</p>
@@ -88,7 +88,7 @@
         <%= render 'invoices/index', :invoices => @closed_invoices, :status => "Closed" %>
         
       </div>
-      <div class="span3 offset1 hint">
+      <div class="span3 offset1 hint hidden-phone">
         <h4>Tip: </h4>
         <p> We don't force you, but adding an email to your contacts allows you to email your invoices, no more snail mail. </p>
         <p> Save the money on stamps and get your invoices to your clients sooner = you get paid sooner too.</p>

@@ -5,9 +5,9 @@
     <th>Job Name</th>
     <% if status == "Scheduled" %>
       <th>Appointment Date</th>
-      <th>Appointment Time</th>
+      <th>Time</th>
     <% end %>
-    <th>Notes</th>
+    <th class="hidden-phone">Notes</th>
   </tr>
 
 <% invoices.each do |invoice| %>
@@ -16,9 +16,9 @@
     <td><%= invoice.job_name %></td>
     <% if status == "Scheduled" %>
       <td><%= (invoice.appointment_date).strftime("%m/%d/%Y") if invoice.appointment_date? %></td>
-      <td><%= (invoice.appointment_time).localtime.strftime("%I:%M %p %Z") if invoice.appointment_time? %></td>
+      <td><%= (invoice.appointment_time).localtime.strftime("%I:%M%p %Z") if invoice.appointment_time? %></td>
     <% end %>
-    <td><%= invoice.notes %></td>
+    <td class="hidden-phone"><%= invoice.notes %></td>
   </tr>
 <% end %>
 </table>

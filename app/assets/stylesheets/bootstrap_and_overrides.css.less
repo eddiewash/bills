@@ -1,6 +1,6 @@
 @import "twitter/bootstrap/bootstrap";
 
-body { padding-top: 40px; }
+body { padding-top: 50px; }
 
 @import "twitter/bootstrap/responsive";
 
@@ -20,7 +20,7 @@ body { padding-top: 40px; }
 @import "fontawesome";
 
 // Glyphicons
-//@import "twitter/bootstrap/sprites.less";
+//@import "twitter/bootstraprites.less";
 
 // Your custom LESS stylesheets goes here
 //
@@ -33,3 +33,111 @@ body { padding-top: 40px; }
 // Example:
 // @linkColor: #ff0000;
 
+// Navbar
+// -------------------------
+@navbarInverseLinkColor:                 @white;
+@navbarInverseLinkColorHover:            @orange;
+@navbarInverseBackground:                rgb(28, 48, 72);
+@navbarInverseBackgroundHighlight:       rgb(28, 48, 72);
+@navbarInverseBorder:                    rgb(28, 48, 72);
+@navbarCollapseWidth: 758px;
+@heroUnitBackground:              #89BCD7;
+body{
+padding-bottom: 20px;
+}
+
+hr {
+margin-top: 20px;
+margin-bottom: 0px;
+}
+
+//public page styling
+.background {
+	background-image: url('climpek.png');
+	height: 100%;
+}
+
+#main_wrapper {
+	width:100%;
+	background: #89BCD7;
+}
+
+.quote {
+	height:110px;
+	padding: 10px;
+	line-height: 150%;
+	background: white;
+	margin-top: 20px;
+	margin-bottom: 30px;
+  border-radius: 8px;
+	box-shadow: 1px 1px 5px #666;
+  position: relative;
+}
+
+.quote:before {
+	content:'';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 30px;
+	top: 130px;
+	border: 10px solid;
+	border-color: white transparent transparent white;
+}
+
+.image {
+	float:left;
+	margin-right: 10px;
+}
+
+
+// form formatting:
+.hint {
+	background: #D9EDF7;
+	color: #3A87AD;
+	padding: 2px 14px;
+	border-radius: 4px;
+	margin-left: auto;
+	margin-right: auto;
+	float: right;
+	border: 1px solid;
+	border-color: #BCE8F1;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.search {
+	margin-top: 15px;
+}
+
+.search input[type = "submit"] {
+	margin-top: -10px;
+}
+
+.float_right {
+	float: right;
+}
+
+.inline {
+	display: inline;
+}
+
+@media screen and (max-width: 476px) {
+	body{
+	max-width: 100%;
+	}
+
+	.hero-unit h1 {
+		font-size: 36px;
+		}
+	
+	.hero-unit {
+		padding: 20px;
+	}
+	
+}
+
+@media screen and (max-width: 783px) {	
+	.hero-unit h1 {
+		font-size: 36px;
+		}
+}
