@@ -17,7 +17,10 @@
 //= require bootstrap-timepicker
 //= require jquery.nested-fields
 //= require_tree .
+	
 jQuery(function($) {
+	
+$(document).on('touchstart.dropdown.data-api', '.dropdown-menu', function (e) { e.stopPropagation() })
 
 // Datepicker
 $('#invoice_service_date, #payment_payment_date, #invoice_invoice_date, #invoice_due_date, .appointment_date').datepicker({ dateFormat: "yy-mm-dd" });
@@ -140,6 +143,8 @@ $("#mapTab").click(function(){
 	$(".map_container").show();
 	google.maps.event.trigger(map, 'resize');
 });
+
+
 
 
 
