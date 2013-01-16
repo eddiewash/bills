@@ -27,12 +27,14 @@ Bills::Application.routes.draw do
   resources :clients do
     resources :contacts
   end
+  
    
   root to: 'home#index'
   
   match '/home' => 'home#index'
   match '/about' => 'home#about'
-  match '/contact_us' => 'home#contact_us'
+  match '/contact_us' => 'contact_us#new'
+  match '/contact_us/send' => 'contact_us#send_email', :via => :post, as: :send_email
   match '/main' =>  'main#index'
   match '/email/invoices/:id' => 'invoices#email_invoice', :via => :get, :as => "email"
     

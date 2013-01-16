@@ -1,0 +1,42 @@
+<header class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+
+			<% if current_user %>
+				<a class= "brand" href="/main">InvoiceMe</a>
+			<% else %>
+  			<a class= "brand" href="/">InvoiceMe</a>
+			<% end %>
+			
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+			<div class="nav-collapse collapse">
+			<ul class="nav">
+				<% if current_user %>
+					<li><%= link_to "Clients", clients_path %></li>
+					<li><%= link_to "Appointments", appointments_path %></li>  					
+					<li><%= link_to "Invoices", invoices_path %></li>
+					<li><%= link_to "Settings", user_company_path(current_user) %></li>					
+				<% else %>
+  				<li><%= link_to "About", about_path %></li>
+					<li><%= link_to "Contact Us", contact_us_path %></li>
+
+				<% end %>
+			</ul>	
+			<ul class="nav pull-right">
+			  <% if current_user %>
+			    <li><%= link_to current_user.full_name, edit_user_registration_path %></li>
+				  <li><%= link_to "Log Out", logout_path %></li>
+			  <% else %>
+				  <li><%= link_to "Register", register_path %></li>
+				  <li><%= link_to "Sign In", signin_path %></li>
+			  <% end %>
+			  
+			</ul>
+			</div>
+		</div>
+	</div>
+</header>
