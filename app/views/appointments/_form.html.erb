@@ -17,15 +17,17 @@
     <% end %>     
     <%= f.input :notes, :input_html => { :class => 'span6', :rows => 5 } %>  
     <%= f.hidden_field :payment_terms %>
+    <%= f.hidden_field :tax1 %>
   </div>
 
   <div class="form-actions">
   <% if method == "create" %>
     <%= f.button :submit, "Set Appointment", :class => 'btn-warning'  %>
+    <%= link_to 'Cancel', appointments_path, :class => 'btn' %>
   <% else %>
     <%= f.button :submit, "Update Appointment", :class => 'btn-warning'  %>
+    <%= link_to 'Cancel', appointment_path(@invoice), :class => 'btn' %>
   <% end %>
-    <%= link_to 'Cancel', @invoice, :class => 'btn' %>
   </div>
 
 <% end %>

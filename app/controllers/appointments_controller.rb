@@ -6,13 +6,12 @@ class AppointmentsController < ApplicationController
     @pending_appointments = appointments.where("invoices.invoice_date IS NULL and invoices.appointment_date IS NULL ", 0)
   end
   
-  def new
-    @invoice = Invoice.new
+  def new   
+    @invoice = Invoice.new   
     if current_user.company == nil
       @invoice.payment_terms = 0
-    else
+    else    
       @invoice.payment_terms = current_user.company.payment_due
-      @invoice.tax1 = current_user.company.tax1
       @invoice.tax1 = current_user.company.tax1
     end 
     @invoice.client_id = params[:id] if params[:id]
