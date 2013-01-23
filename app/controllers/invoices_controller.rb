@@ -2,8 +2,8 @@ class InvoicesController < ApplicationController
 
   def index
     invoices = current_user.invoices
-    @open_invoices = invoices.where("invoices.invoice_date IS NULL or invoices.balance != ?", 0)
-    @closed_invoices = invoices.where("invoices.balance = ? and invoices.invoice_date IS NOT NULL", 0) 
+    @open_invoices = invoices.where("(invoices.invoice_date IS NULL or invoices.balance != ?) and invoices.close != ?", 0, true)
+    @closed_invoices = invoices.where("(invoices.balance = ? and invoices.invoice_date IS NOT NULL) or invoices.close = ?", 0, true) 
   end
 
   def show
@@ -76,6 +76,22 @@ class InvoicesController < ApplicationController
       format.html { redirect_to invoices_url }
       format.json { head :no_content }
     end
+  end
+  
+  def close
+
+    @invoice = Invoice.find(params[:id])
+    if params[:type] == "close"
+      type = "closed."
+      @invoice.close = true
+    elsif params[:type] == "open"
+      type = "reopened."
+      @invoice.close = false     
+    end
+      
+    @invoice.save
+    redirect_to @invoice, notice: "Invoice was successfully #{type}"
+
   end
   
 end

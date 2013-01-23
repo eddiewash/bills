@@ -15,6 +15,11 @@
     <li class="visible-phone"><%= link_to 'Post Payment', new_invoice_payment_path(@invoice) %></li>
     <li><%= link_to 'Show Payments', invoice_payment_path(@invoice) %></li>
     <li><%= link_to 'Send Thanks', new_invoice_email_path(@invoice, :type => "thanks") %></li>
+    <% if @invoice.close == false %>
+    <li><%= link_to 'Close Invoice', close_invoice_path(@invoice, :type => "close") %></li>
+    <% else %>
+      <li><%= link_to 'Reopen Invoice', close_invoice_path(@invoice, :type => "open") %></li>
+    <% end %>
     <li><%= link_to 'Delete', invoice_path(@invoice), confirm: 'Are you sure?', method: :delete %></li>   
   </ul>
 </div>
@@ -99,6 +104,12 @@
           <td><b>Amount Due:</b></td>
           <td><%= number_to_currency(@invoice.total) %></td>
         </tr>
+        <% if @invoice.close == true %>
+          <tr>
+            <td><b>Invoice Closed: </b></td>
+            <td>Yes</td>
+          </tr>
+        <% end %>
     
   
       </table>

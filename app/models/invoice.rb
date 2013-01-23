@@ -26,7 +26,7 @@
 #
 
 class Invoice < ActiveRecord::Base
-  attr_accessible :items_attributes, :job_name, :po_number, :total_payments, :notes, :appointment_date, :appointment_time, :service_date, :due_date, :invoice_date, :client_id,  :tax1, :tax2, :payment_terms, :date_text, :time_text
+  attr_accessible :items_attributes, :job_name, :po_number, :total_payments, :notes, :appointment_date, :appointment_time, :service_date, :due_date, :invoice_date, :client_id,  :tax1, :tax2, :payment_terms, :date_text, :time_text, :close
   
   attr_writer :date_text, :time_text
   

@@ -37,6 +37,7 @@ Bills::Application.routes.draw do
   match '/contact_us/send' => 'contact_us#send_email', :via => :post, as: :send_email
   match '/main' =>  'main#index'
   match '/email/invoices/:id' => 'invoices#email_invoice', :via => :get, :as => "email"
+  match '/invoices/:id/close' => 'invoices#close', as: :close_invoice
     
 
   # The priority is based upon order of creation:
